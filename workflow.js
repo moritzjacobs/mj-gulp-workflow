@@ -1,5 +1,5 @@
-var fs = require("fs"),
-    del = require("del");
+const fs = require("fs");
+const del = require("del");
 
 imagemin = require("gulp-imagemin");
 
@@ -14,41 +14,43 @@ argv = require("yargs")
 
 global.env = argv.env;
 
-console.log("Environment: " + global.env);
+console.log(`Environment: ${global.env}`);
 
-var workflow = function(gulp) {
+const workflow = gulp => {
     if (!gulp) return false;
 
     global.moduleRootDir = __dirname;
     global.appRootDir = require("app-root-dir").get();
 
-    var config = require("./core/config.js")();
+    const config = require("./core/config.js")();
 
     // Init all tasks
-    var tasks = fs.readdirSync(global.moduleRootDir + "/tasks/");
+    const tasks = fs.readdirSync(`${global.moduleRootDir}/tasks/`);
 
-    tasks.forEach(function(task) {
-        require("./tasks/" +
-            task +
-            "/task.js")(gulp, config[task], config.paths[task]);
+    tasks.forEach(task => {
+        require(`./tasks/${task}/task.js`)(
+            gulp,
+            config[task],
+            config.paths[task]
+        );
     });
 
-    gulp.task("clean", function() {
+    gulp.task("clean", () => {
         del([global.env]);
     });
 
-    for (var taskName in config.combinedTasks) {
+    for (const taskName in config.combinedTasks) {
         gulp.task(taskName, config.combinedTasks[taskName]);
     }
 
-    gulp.task("watch", function() {
-        for (var pathGroup in config.watchTask) {
-            var sources = config.paths[pathGroup];
-            var tasks = config.watchTask[pathGroup];
+    gulp.task("watch", () => {
+        for (const pathGroup in config.watchTask) {
+            const sources = config.paths[pathGroup];
+            const tasks = config.watchTask[pathGroup];
 
             if (typeof sources !== "string") {
-                for (var dest in sources) {
-                    var source = sources[dest];
+                for (const dest in sources) {
+                    const source = sources[dest];
                     gulp.watch(source, tasks);
                 }
             } else {

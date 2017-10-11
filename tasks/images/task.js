@@ -1,12 +1,12 @@
-var imagemin = require("gulp-imagemin");
+const imagemin = require("gulp-imagemin");
 
-module.exports = function(gulp, config, paths) {
-	gulp.task("images", function() {
-		for (var dest in paths) {
-			var source = paths[dest];
+module.exports = (gulp, config, paths) => {
+	gulp.task("images", () => {
+		for (let dest in paths) {
+			const source = paths[dest];
 			dest = replaceEnv(dest);
 
-			var buffer = gulp.src(source);
+			let buffer = gulp.src(source);
 
 			if (isEnabled(config.imagemin.enabled)) {
 				buffer = buffer.pipe(imagemin(config.imagemin.config));

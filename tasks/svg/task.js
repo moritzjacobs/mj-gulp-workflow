@@ -1,12 +1,12 @@
-var svgmin = require("gulp-svgmin");
+const svgmin = require("gulp-svgmin");
 
-module.exports = function(gulp, config, paths) {
-	gulp.task("svg", function() {
-		for (var dest in paths) {
-			var source = paths[dest];
+module.exports = (gulp, config, paths) => {
+	gulp.task("svg", () => {
+		for (let dest in paths) {
+			const source = paths[dest];
 			dest = replaceEnv(dest);
 
-			var buffer = gulp.src(source);
+			let buffer = gulp.src(source);
 
 			if (isEnabled(config.svgmin.enabled)) {
 				buffer = buffer.pipe(svgmin(config.svgmin.config));

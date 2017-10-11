@@ -1,23 +1,23 @@
-var babel = require("gulp-babel"),
-	concat = require("gulp-concat"),
-	changed = require("gulp-changed"),
-	sourcemaps = require("gulp-sourcemaps"),
-	gutil = require("gulp-util");
+const babel = require("gulp-babel");
+const concat = require("gulp-concat");
+const changed = require("gulp-changed");
+const sourcemaps = require("gulp-sourcemaps");
+const gutil = require("gulp-util");
 
-module.exports = function(gulp, config, paths) {
-	gulp.task("js", function() {
-		for (var dest in paths) {
-			var source = paths[dest];
+module.exports = (gulp, config, paths) => {
+	gulp.task("js", () => {
+		for (let dest in paths) {
+			const source = paths[dest];
 			dest = replaceEnv(dest);
 
-			var file = dest.replace(/^.*[\\\/]/, "");
-			var isFile = file.length > 0;
+			const file = dest.replace(/^.*[\\\/]/, "");
+			const isFile = file.length > 0;
 
 			if (isFile) {
 				dest = dest.replace(file, "");
 			}
 
-			var buffer = gulp.src(source);
+			let buffer = gulp.src(source);
 
 			if (isEnabled(config.sourcemaps.enabled)) {
 				buffer = buffer.pipe(sourcemaps.init());

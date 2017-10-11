@@ -33,9 +33,9 @@ module.exports = {
 
 	js: {
 		sourcemaps: {
-			enabled: true,
+			enabled: true
 		},
-		
+
 		babeljs: {
 			enabled: true,
 			config: {
@@ -80,7 +80,7 @@ module.exports = {
 			"../public/css/": ["../src/scss/**/*.scss"]
 		},
 		js: {
-			"../public/js/script.js": ["../src/js/script/**/*.js"],
+			"../public/js/script.js": ["../src/js/script/**/*.js"]
 		},
 		images: {
 			"../public/img/": [
@@ -112,6 +112,6 @@ module.exports = {
 		svg: ["svg"],
 		css: ["css"],
 		js: ["js"],
-		copy: ["copy"],
+		copy: ["copy"]
 	}
 };

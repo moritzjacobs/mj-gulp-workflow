@@ -1,28 +1,27 @@
-var fs = require("fs");
+const fs = require("fs");
 
-var compileConfigExists = function() {
-	return fs.existsSync(global.appRootDir + "/compileConfig.js");
-};
+const compileConfigExists = () =>
+	fs.existsSync(`${global.appRootDir}/compileConfig.js`);
 
-var writeDefaultConfig = function() {
-	var defaultConfig = fs.readFileSync(
-		global.moduleRootDir + "/defaultConfig.js",
+const writeDefaultConfig = () => {
+	const defaultConfig = fs.readFileSync(
+		`${global.moduleRootDir}/defaultConfig.js`,
 		"UTF-8"
 	);
 
 	// Write the default compileConfig file
-	fs.writeFileSync(global.appRootDir + "/compileConfig.js", defaultConfig);
+	fs.writeFileSync(`${global.appRootDir}/compileConfig.js`, defaultConfig);
 };
 
-var configVersionsDifferent = function() {
-	var defaultConfig = require(global.moduleRootDir + "/defaultConfig.js");
-	var compileConfig = require(global.appRootDir + "/compileConfig.js");
+const configVersionsDifferent = () => {
+	const defaultConfig = require(`${global.moduleRootDir}/defaultConfig.js`);
+	const compileConfig = require(`${global.appRootDir}/compileConfig.js`);
 
 	return compileConfig.version !== defaultConfig.version;
 };
 
-var config = function() {
-	var defaultConfig = require(global.moduleRootDir + "/defaultConfig.js");
+const config = () => {
+	const defaultConfig = require(`${global.moduleRootDir}/defaultConfig.js`);
 
 	if (!compileConfigExists()) {
 		writeDefaultConfig();
@@ -30,12 +29,11 @@ var config = function() {
 
 	if (configVersionsDifferent()) {
 		console.info(
-			"The defaultConfig was updated! Make sure to update you compileConfig accordingly. New version: " +
-				defaultConfig.version
+			`The defaultConfig was updated! Make sure to update you compileConfig accordingly. New version: ${defaultConfig.version}`
 		);
 	}
 
-	return require(global.appRootDir + "/compileConfig.js");
+	return require(`${global.appRootDir}/compileConfig.js`);
 	// return require(global.moduleRootDir + '/defaultConfig.js');
 };
 

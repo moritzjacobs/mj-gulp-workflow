@@ -1,3 +1,1 @@
-module.exports = function(string) {
-	return string.replace("{env}", global.env);
-};
+module.exports = string => string.replace("{env}", global.env);

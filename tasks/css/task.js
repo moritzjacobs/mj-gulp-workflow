@@ -1,16 +1,16 @@
-var sass = require("gulp-sass"),
-	mkdirp = require("mkdirp"),
-	sourcemaps = require("gulp-sourcemaps"),
-	changed = require("gulp-changed"),
-	gutil = require("gulp-util");
+const sass = require("gulp-sass");
+const mkdirp = require("mkdirp");
+const sourcemaps = require("gulp-sourcemaps");
+const changed = require("gulp-changed");
+const gutil = require("gulp-util");
 
-module.exports = function(gulp, config, paths) {
-	gulp.task("css", function() {
-		for (var dest in paths) {
-			var source = paths[dest];
+module.exports = (gulp, config, paths) => {
+	gulp.task("css", () => {
+		for (let dest in paths) {
+			const source = paths[dest];
 			dest = replaceEnv(dest);
 
-			var buffer = gulp.src(source);
+			let buffer = gulp.src(source);
 
 			if (isEnabled(config.sourcemaps.enabled)) {
 				buffer = buffer.pipe(sourcemaps.init());
