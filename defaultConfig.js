@@ -15,7 +15,7 @@ module.exports = {
 		autoprefixer: {
 			enabled: true,
 			config: {
-				browsers: ["> 1%"]
+				browsers: ["> 1%", "iOS 8", "ie 9", "ie 10", "ie 11"]
 			}
 		},
 
@@ -77,25 +77,25 @@ module.exports = {
 	paths: {
 		// "DESTINATION" : ['SOURCE']
 		css: {
-			"./public/css/": ["./src/css/**/*.scss"]
+			"../public/css/": ["../src/scss/**/*.scss"]
 		},
 		js: {
-			"./public/js/script.js": ["./src/js/**/*.js"]
+			"../public/js/script.js": ["../src/js/script/**/*.js"]
 		},
 		images: {
-			"./public/img/": [
-				"./src/img/**/*.jpeg",
-				"./src/img/**/*.jpg",
-				"./src/img/**/*.png",
-				"./src/img/**/*.gif"
+			"../public/img/": [
+				"../src/img/**/*.jpeg",
+				"../src/img/**/*.jpg",
+				"../src/img/**/*.png",
+				"../src/img/**/*.gif"
 			]
 		},
 		svg: {
-			"./public/img/": ["./src/img/**/*.svg"]
+			"../public/img/": ["../src/img/**/*.svg"]
 		},
 		copy: {
-			"./public/fonts/": ["./src/fonts/**/*.*"],
-			"./public/favicons/": ["./src/favicons/**/*.*"]
+			"../public/fonts/": ["../src/fonts/**/*.*"],
+			"../public/favicons/": ["../src/favicons/**/*.*"]
 		}
 	},
 

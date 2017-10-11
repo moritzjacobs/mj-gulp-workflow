@@ -1,5 +1,5 @@
 require("./globalVars.js");
-const testConfig = require("../compileConfig.js");
+require("./testConfig.js");
 
 const assert = require("assert");
 const fs = require("fs");
@@ -56,21 +56,21 @@ function runGulp() {
 
 function runTest() {
 	describe("Testing gulp tasks: \n", () => {
-		const fileJS = "./test/output/js/script.js";
+		const fileJS = "./test/output/js/test.js";
 		const fileCSS = "./test/output/css/main.css";
 		const fileImage = "./test/output/images/test.jpg";
 		const fileCopy = "./test/output/fonts/copyme.txt";
-		const copyInput = fs.readFileSync("./test/compare/fonts/copyme.txt");
+		const copyInput = fs.readFileSync("./test/input_comp/fonts/copyme.txt");
 		const fileSvg = "./test/output/images/test.svg";
-		const jsInput = fs.readFileSync("./test/compare/js/script.js", "utf8");
+		const jsInput = fs.readFileSync("./test/input_comp/js/test.js", "utf8");
 
 		const cssInput = fs.readFileSync(
-			"./test/compare/css/main.css",
+			"./test/input_comp/css/main.css",
 			"utf8"
 		);
 
-		const imageInput = "./test/src/images/test.jpg";
-		const svgInput = "./test/src/images/test.svg";
+		const imageInput = "./test/input/images/test.jpg";
+		const svgInput = "./test/input/images/test.svg";
 
 		const compareFiles = task => {
 			if (task == "js" && jsInput === fs.readFileSync(fileJS, "utf8")) {
