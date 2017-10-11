@@ -5,7 +5,7 @@ A fork of [zephir/zephir-gulp-workflow](https://github.com/zephir/zephir-gulp-wo
 ## Installation
 
 1. Create a package.json in you project **>>** `npm init`
-2. Install dep's **>>** `npm i --save-dev gulp mj-gulp-workflow`
+2. Install dep's **>>** `npm i --save-dev gulp mj-gulp-workflow babel-preset-env`
 3. Create a new file gulpfile.js and add the content you find below
 
 ```js
