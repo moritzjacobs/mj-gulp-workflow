@@ -24,7 +24,11 @@ module.exports = function(gulp, config, paths) {
 			}
 
 			if (isEnabled(config.babeljs.enabled)) {
-				buffer = buffer.pipe(babel(config.babeljs.config));
+				buffer = buffer.pipe(
+					babel(config.babeljs.config).on("error", e => {
+						console.log(e.toString());
+					})
+				);
 			}
 
 			if (isFile) {
