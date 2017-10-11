@@ -93,7 +93,7 @@ module.exports = {
 			"../public/img/": ["../src/img/**/*.svg"]
 		},
 		copy: {
-			"../public/fonts/": ["../src/fonts/**/*.*"]
+			"../public/fonts/": ["../src/fonts/**/*.*"],
 			"../public/favicons/": ["../src/favicons/**/*.*"]
 		}
 	},
