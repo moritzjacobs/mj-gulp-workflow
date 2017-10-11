@@ -59,7 +59,7 @@ module.exports = {
 		imagemin: {
 			enabled: true,
 			config: [
-				imagemin.gifsicle({ interlaced: true }),
+				imagemin.gifsicle({ interlaced: true, optimizationLevel: 3 }),
 				imagemin.jpegtran({ progressive: true }),
 				imagemin.optipng({ optimizationLevel: 5 }),
 				imagemin.svgo({ plugins: [{ removeViewBox: true }] })
@@ -77,25 +77,25 @@ module.exports = {
 	paths: {
 		// "DESTINATION" : ['SOURCE']
 		css: {
-			"./public/css/": ["./src/css/**/*.scss"]
+			"./test/output/css/": ["./test/src/css/**/*.scss"]
 		},
 		js: {
-			"./public/js/script.js": ["./src/js/**/*.js"]
+			"./test/output/js/script.js": ["./test/src/js/*.js"],
+			"./test/output/js/admin.js": ["./test/src/js/admin/*.js"],
 		},
 		images: {
-			"./public/img/": [
-				"./src/img/**/*.jpeg",
-				"./src/img/**/*.jpg",
-				"./src/img/**/*.png",
-				"./src/img/**/*.gif"
+			"./test/output/images/": [
+				"./test/src/images/**/*.jpeg",
+				"./test/src/images/**/*.jpg",
+				"./test/src/images/**/*.png",
+				"./test/src/images/**/*.gif"
 			]
 		},
 		svg: {
-			"./public/img/": ["./src/img/**/*.svg"]
+			"./test/output/images/": ["./test/src/images/**/*.svg"]
 		},
 		copy: {
-			"./public/fonts/": ["./src/fonts/**/*.*"],
-			"./public/favicons/": ["./src/favicons/**/*.*"]
+			"./test/output/fonts/": ["./test/src/fonts/**/*.*"],
 		}
 	},
 
