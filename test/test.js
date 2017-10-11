@@ -48,12 +48,9 @@ function runTest() {
 		var fileJS = "./test/output/js/test.js",
 			fileCSS = "./test/output/css/main.css",
 			fileImage = "./test/output/images/test.jpg",
-			
 			fileCopy = "./test/output/fonts/copyme.txt",
 			copyInput = fs.readFileSync("./test/input_comp/fonts/copyme.txt"),
-
 			fileSvg = "./test/output/images/test.svg",
-			
 			jsInput = fs.readFileSync("./test/input_comp/js/test.js", "utf8"),
 			cssInput = fs.readFileSync(
 				"./test/input_comp/css/main.css",
@@ -90,7 +87,11 @@ function runTest() {
 					return true;
 				}
 
-				if (task == "copy" && copyInput.toString() === fs.readFileSync(fileCopy).toString()) {
+				if (
+					task == "copy" &&
+					copyInput.toString() ===
+						fs.readFileSync(fileCopy).toString()
+				) {
 					return true;
 				}
 

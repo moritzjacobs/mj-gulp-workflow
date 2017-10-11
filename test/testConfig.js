@@ -11,9 +11,9 @@ module.exports = testConfig = {
 				browsers: ["> 0.1%"]
 			}
 		},
-        sourcemaps: {
-            enabled: true,
-        },
+		sourcemaps: {
+			enabled: true
+		},
 		pxToRem: {
 			enabled: true,
 			config: {
@@ -38,7 +38,7 @@ module.exports = testConfig = {
 
 	js: {
 		sourcemaps: {
-			enabled: true,
+			enabled: true
 		},
 
 		babeljs: {
