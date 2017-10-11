@@ -1,4 +1,4 @@
-A fork of [zephir/zephir-gulp-workflow](https://github.com/zephir/zephir-gulp-workflow), ported to gulp4 with added sourcemaps, etc.
+A fork of [zephir/zephir-gulp-workflow](https://github.com/zephir/zephir-gulp-workflow) with added sourcemaps and other things.
 
 # differences to zephir-gulp-workflow:
 
@@ -27,3 +27,8 @@ Runs the following plugins:
 
 1. BabelJS *[configuration](https://github.com/babel/gulp-babel#api)*
 2. with babel-preset-env and a autoprefixer config as defaultConfig.js
+
+# @todo:
+- Port to gulp 4
+- Notifications
+- better error-reporting
