@@ -40,6 +40,7 @@ module.exports = {
 			enabled: true,
 			config: {
 				minified: true,
+				comments: false,
 				presets: [
 					[
 						"env",
