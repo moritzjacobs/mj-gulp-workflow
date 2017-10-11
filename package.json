@@ -1,7 +1,8 @@
 {
 	"name": "mj-gulp-workflow",
 	"version": "1.0.3",
-	"description": "",
+	"repository": "https://github.com/moritzjacobs/mj-gulp-workflow",
+	"description": "A fork of https://github.com/zephir/zephir-gulp-workflow with added sourcemaps and other things.",
 	"main": "workflow.js",
 	"scripts": {
 		"test": "mocha"
@@ -13,6 +14,8 @@
 		"autoprefixer": "^7.1.5",
 		"babel-core": "^6.26.0",
 		"babel-preset-env": "^1.6.0",
+		"del": "^3.0.0",
+		"gulp": "^3.9.1",
 		"gulp-babel": "^7.0.0",
 		"gulp-changed": "^3.1.0",
 		"gulp-clean-css": "^3.9.0",
@@ -22,14 +25,13 @@
 		"gulp-sass": "^3.1.0",
 		"gulp-sourcemaps": "^2.6.1",
 		"gulp-svgmin": "^1.2.4",
-		"mkdirp": "^0.5.1",
-		"postcss-pxtorem": "^4.0.1",
-		"yargs": "^9.0.1",
-		"del": "^3.0.0",
-		"gulp": "^3.9.1",
 		"gulp-util": "^3.0.8",
 		"image-size": "^0.6.1",
+		"imagemin-pngquant": "^5.0.1",
+		"mkdirp": "^0.5.1",
 		"mocha": "^4.0.1",
-		"should": "^13.1.2"
+		"postcss-pxtorem": "^4.0.1",
+		"should": "^13.1.2",
+		"yargs": "^9.0.1"
 	}
 }
