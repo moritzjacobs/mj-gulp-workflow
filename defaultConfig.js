@@ -1,111 +1,116 @@
 module.exports = {
-    version: "0.0.2",
+	version: "0.0.2",
 
-    css: {
-        scss: {
-            config: {
-                outputStyle: "compressed" // nested, compact, expanded and compressed are available options
-            }
-        },
-        autoprefixer: {
-            enabled: true,
-            config: {
-                browsers: ["> 0.1%"]
-            }
-        },
-        pxToRem: {
-            enabled: true,
-            config: {
-                rootValue: 16,
-                propList: [
-                    "font",
-                    "font-size",
-                    "line-height",
-                    "letter-spacing"
-                ],
-                selectorBlackList: [/^html$/, /^body$/], // Ignore font-size definition on html or body
-                replace: false
-            }
-        },
-        cleanCss: {
-            enabled: "dev, prep, prod",
-            config: {
-                compatibility: "ie8"
-            }
-        }
-    },
+	css: {
+		scss: {
+			config: {
+				outputStyle: "compressed" // nested, compact, expanded and compressed are available options
+			}
+		},
 
-    js: {
-        babeljs: {
-            enabled: true,
-            config: {
-                minified: true,
-                presets: [
-                    [
-                        "env",
-                        {
-                            targets: {
-                                browsers: ["> 0.1%"]
-                            }
-                        }
-                    ]
-                ]
-            }
-        }
-    },
+		sourcemaps: {
+			enabled: true
+		},
 
-    images: {
-        imagemin: {
-            enabled: true,
-            config: [
-                imagemin.gifsicle({ interlaced: true }),
-                imagemin.jpegtran({ progressive: true }),
-                imagemin.optipng({ optimizationLevel: 5 }),
-                imagemin.svgo({ plugins: [{ removeViewBox: true }] })
-            ]
-        }
-    },
+		autoprefixer: {
+			enabled: true,
+			config: {
+				browsers: ["> 1%", "iOS 8", "ie 9", "ie 10", "ie 11"]
+			}
+		},
 
-    svg: {
-        svgmin: {
-            enabled: true,
-            config: {}
-        }
-    },
+		pxToRem: {
+			enabled: false
+		},
 
-    paths: {
-        // "DESTINATION" : ['SOURCE']
-        css: {
-            "{env}/css/main1and2/": ["scss/main1.scss", "scss/main2.scss"],
-            "{env}/css/mainAll/": ["scss/main*.scss"],
-            "{env}/css/all/": ["scss/**/*.scss"]
-            // "{env}/css/mainAll/": ['sass/main*.scss'] // Please make sure, that your compiled files pointing to an unique destination.
-            // "{env}/css/all/": ['sass/**/*.scss']
-        },
-        js: {
-            "{env}/js/main.min.js": ["js/**/*.js"],
-            "{env}/jsDir/": ["js/**/*.js"]
-        },
-        images: {
-            "public_html/images/": "public_html/images/*"
-        },
-        svg: {
-            "public_html/svgs/": [
-                "svgs/scene02_earn_overview.svg",
-                "svgs/scene03_pay_overview.svg"
-            ]
-        }
-    },
+		cleanCss: {
+			enabled: true,
+			config: {
+				compatibility: "ie8"
+			}
+		}
+	},
 
-    // All tasks above are available (css, js, images and svg)
-    combinedTasks: {
-        default: ["css", "js"],
-        compile: ["css", "js"],
-        compress: ["images", "svg"]
-    },
+	js: {
+		sourcemaps: {
+			enabled: true,
+		},
+		
+		babeljs: {
+			enabled: true,
+			config: {
+				minified: true,
+				presets: [
+					[
+						"env",
+						{
+							targets: {
+								browsers: ["> 0.1%"]
+							}
+						}
+					]
+				]
+			}
+		}
+	},
 
-    watchTask: {
-        css: ["css"],
-        js: ["js"]
-    }
+	images: {
+		imagemin: {
+			enabled: true,
+			config: [
+				imagemin.gifsicle({ interlaced: true }),
+				imagemin.jpegtran({ progressive: true }),
+				imagemin.optipng({ optimizationLevel: 5 }),
+				imagemin.svgo({ plugins: [{ removeViewBox: true }] })
+			]
+		}
+	},
+
+	svg: {
+		svgmin: {
+			enabled: true,
+			config: {}
+		}
+	},
+
+	paths: {
+		// "DESTINATION" : ['SOURCE']
+		css: {
+			"../public/css/": ["../src/scss/**/*.scss"]
+		},
+		js: {
+			"../public/js/script.js": ["../src/js/script/**/*.js"],
+		},
+		images: {
+			"../public/img/": [
+				"../src/img/**/*.jpeg",
+				"../src/img/**/*.jpg",
+				"../src/img/**/*.png",
+				"../src/img/**/*.gif"
+			]
+		},
+		svg: {
+			"../public/img/": ["../src/img/**/*.svg"]
+		},
+		copy: {
+			"../public/fonts/": ["../src/fonts/**/*.*"]
+			"../public/favicons/": ["../src/favicons/**/*.*"]
+		}
+	},
+
+	// All tasks above are available (css, js, images and svg)
+	combinedTasks: {
+		default: ["dist", "watch"],
+		dist: ["images", "svg", "css", "js", "copy"],
+		compile: ["css", "js"],
+		compress: ["images", "svg"]
+	},
+
+	watchTask: {
+		images: ["images"],
+		svg: ["svg"],
+		css: ["css"],
+		js: ["js"],
+		copy: ["copy"],
+	}
 };

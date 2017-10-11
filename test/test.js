@@ -32,6 +32,11 @@ function runGulp() {
 						require(__dirname +
 							"/../tasks/images/task.js")(gulp, testConfig.images, testConfig.paths.images);
 						gulp.start("images");
+					})
+					.then(function() {
+						require(__dirname +
+							"/../tasks/copy/task.js")(gulp, testConfig.copy, testConfig.paths.copy);
+						gulp.start("copy");
 					});
 			});
 		});
@@ -43,7 +48,12 @@ function runTest() {
 		var fileJS = "./test/output/js/test.js",
 			fileCSS = "./test/output/css/main.css",
 			fileImage = "./test/output/images/test.jpg",
+			
+			fileCopy = "./test/output/fonts/copyme.txt",
+			copyInput = fs.readFileSync("./test/input_comp/fonts/copyme.txt"),
+
 			fileSvg = "./test/output/images/test.svg",
+			
 			jsInput = fs.readFileSync("./test/input_comp/js/test.js", "utf8"),
 			cssInput = fs.readFileSync(
 				"./test/input_comp/css/main.css",
@@ -80,6 +90,10 @@ function runTest() {
 					return true;
 				}
 
+				if (task == "copy" && copyInput.toString() === fs.readFileSync(fileCopy).toString()) {
+					return true;
+				}
+
 				return false;
 			};
 
@@ -108,6 +122,13 @@ function runTest() {
 			it("done", function(img) {
 				assert.equal(true, compareFiles("svg"));
 				setTimeout(img, 800);
+			});
+		});
+
+		describe("File copying ... ", function() {
+			it("done", function(copy) {
+				assert.equal(true, compareFiles("copy"));
+				setTimeout(copy, 500);
 			});
 		});
 	});

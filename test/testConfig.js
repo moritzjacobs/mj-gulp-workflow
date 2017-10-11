@@ -40,7 +40,7 @@ module.exports = testConfig = {
 		sourcemaps: {
 			enabled: true,
 		},
-		
+
 		babeljs: {
 			enabled: true,
 			config: {
@@ -81,6 +81,9 @@ module.exports = testConfig = {
 		},
 		images: {
 			"./test/output/images/": ["./test/input/images/**/*"]
+		},
+		copy: {
+			"./test/output/fonts/": ["./test/input/fonts/**/*"]
 		}
 	}
 };
