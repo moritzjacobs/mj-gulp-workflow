@@ -1,5 +1,6 @@
 var sass = require("gulp-sass"),
 	mkdirp = require("mkdirp"),
+	sourcemaps = require("gulp-sourcemaps"),
 	changed = require("gulp-changed"),
 	gutil = require("gulp-util");
 
@@ -10,6 +11,10 @@ module.exports = function(gulp, config, paths) {
 			dest = replaceEnv(dest);
 
 			var buffer = gulp.src(source);
+
+			if (isEnabled(config.sourcemaps.enabled)) {
+				buffer = buffer.pipe(sourcemaps.init());
+			}
 
 			buffer = buffer.pipe(
 				sass(config.scss.config).on("error", sass.logError)
@@ -31,6 +36,10 @@ module.exports = function(gulp, config, paths) {
 					buffer,
 					config.cleanCss.config
 				);
+			}
+
+			if (isEnabled(config.sourcemaps.enabled)) {
+				buffer = buffer.pipe(sourcemaps.write("."));
 			}
 
 			buffer.pipe(gulp.dest(dest)).on("error", gutil.log);

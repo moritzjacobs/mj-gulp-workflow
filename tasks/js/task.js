@@ -1,6 +1,7 @@
 var babel = require("gulp-babel"),
 	concat = require("gulp-concat"),
 	changed = require("gulp-changed"),
+	sourcemaps = require("gulp-sourcemaps"),
 	gutil = require("gulp-util");
 
 module.exports = function(gulp, config, paths) {
@@ -18,12 +19,20 @@ module.exports = function(gulp, config, paths) {
 
 			var buffer = gulp.src(source);
 
+			if (isEnabled(config.sourcemaps.enabled)) {
+				buffer = buffer.pipe(sourcemaps.init());
+			}
+
 			if (isEnabled(config.babeljs.enabled)) {
 				buffer = buffer.pipe(babel(config.babeljs.config));
 			}
 
 			if (isFile) {
 				buffer = buffer.pipe(concat(file));
+			}
+
+			if (isEnabled(config.sourcemaps.enabled)) {
+				buffer = buffer.pipe(sourcemaps.write("."));
 			}
 
 			buffer.pipe(gulp.dest(dest)).on("error", gutil.log);
