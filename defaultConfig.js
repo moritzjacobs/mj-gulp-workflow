@@ -15,7 +15,7 @@ module.exports = {
 		autoprefixer: {
 			enabled: true,
 			config: {
-				browsers: ["> 1%", "iOS 8", "ie 9", "ie 10", "ie 11"]
+				browsers: ["> 0.1%"]
 			}
 		},
 
