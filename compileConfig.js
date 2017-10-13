@@ -1,3 +1,5 @@
+const imagemin = require("gulp-imagemin");
+
 module.exports = {
 	version: "0.0.2",
 
@@ -15,7 +17,7 @@ module.exports = {
 		autoprefixer: {
 			enabled: true,
 			config: {
-				browsers: ["> 0.1%"]
+				browsers: ["> 1%", "iOS 8", "ie 9", "ie 10", "ie 11"]
 			}
 		},
 
@@ -77,25 +79,24 @@ module.exports = {
 	paths: {
 		// "DESTINATION" : ['SOURCE']
 		css: {
-			"../public/css/": ["../src/scss/**/*.scss"]
+			"./test/output/css/": ["./test/input/css/**/*.scss"]
 		},
 		js: {
-			"../public/js/script.js": ["../src/js/script/**/*.js"]
+			"./test/output/js/script.js": ["./test/input/js/**/*.js"]
 		},
 		images: {
-			"../public/img/": [
-				"../src/img/**/*.jpeg",
-				"../src/img/**/*.jpg",
-				"../src/img/**/*.png",
-				"../src/img/**/*.gif"
+			"./test/output/images/": [
+				"./test/input/images/**/*.jpeg",
+				"./test/input/images/**/*.jpg",
+				"./test/input/images/**/*.png",
+				"./test/input/images/**/*.gif"
 			]
 		},
 		svg: {
-			"../public/img/": ["../src/img/**/*.svg"]
+			"./test/output/images/": ["./test/input/images/**/*.svg"]
 		},
 		copy: {
-			"../public/fonts/": ["../src/fonts/**/*.*"],
-			"../public/favicons/": ["../src/favicons/**/*.*"]
+			"./test/output/favicons/": ["./test/input/favicons/**/*.*"]
 		}
 	},
 

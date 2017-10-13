@@ -1,0 +1,13 @@
+// Simple Sass structure for testing
+
+@import "partials/reset";
+
+$w: 10px;
+
+.foo {
+	display: flex;
+	
+	.bar {
+		padding: $w;
+	}
+}
