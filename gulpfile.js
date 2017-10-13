@@ -1,1 +1,1 @@
-require('./workflow.js')(require('gulp'));
+require("./workflow.js")(require("gulp"));

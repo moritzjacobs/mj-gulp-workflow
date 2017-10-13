@@ -1,3 +1,5 @@
+const imagemin = require("gulp-imagemin");
+
 module.exports = {
 	version: "0.0.2",
 
@@ -15,7 +17,7 @@ module.exports = {
 		autoprefixer: {
 			enabled: true,
 			config: {
-				browsers: ["> 1%"]
+				browsers: ["> 1%", "iOS 8", "ie 9", "ie 10", "ie 11"]
 			}
 		},
 
@@ -59,7 +61,7 @@ module.exports = {
 		imagemin: {
 			enabled: true,
 			config: [
-				imagemin.gifsicle({ interlaced: true, optimizationLevel: 3 }),
+				imagemin.gifsicle({ interlaced: true }),
 				imagemin.jpegtran({ progressive: true }),
 				imagemin.optipng({ optimizationLevel: 5 }),
 				imagemin.svgo({ plugins: [{ removeViewBox: true }] })
@@ -77,25 +79,24 @@ module.exports = {
 	paths: {
 		// "DESTINATION" : ['SOURCE']
 		css: {
-			"./test/output/css/": ["./test/src/css/**/*.scss"]
+			"./test/output/css/": ["./test/input/css/**/*.scss"]
 		},
 		js: {
-			"./test/output/js/script.js": ["./test/src/js/*.js"],
-			"./test/output/js/admin.js": ["./test/src/js/admin/*.js"],
+			"./test/output/js/script.js": ["./test/input/js/**/*.js"]
 		},
 		images: {
 			"./test/output/images/": [
-				"./test/src/images/**/*.jpeg",
-				"./test/src/images/**/*.jpg",
-				"./test/src/images/**/*.png",
-				"./test/src/images/**/*.gif"
+				"./test/input/images/**/*.jpeg",
+				"./test/input/images/**/*.jpg",
+				"./test/input/images/**/*.png",
+				"./test/input/images/**/*.gif"
 			]
 		},
 		svg: {
-			"./test/output/images/": ["./test/src/images/**/*.svg"]
+			"./test/output/images/": ["./test/input/images/**/*.svg"]
 		},
 		copy: {
-			"./test/output/fonts/": ["./test/src/fonts/**/*.*"],
+			"./test/output/favicons/": ["./test/input/favicons/**/*.*"]
 		}
 	},
 

@@ -12,21 +12,22 @@ A fork of [zephir/zephir-gulp-workflow](https://github.com/zephir/zephir-gulp-wo
 require('mj-gulp-workflow')(require('gulp'));
 ```
 
-### Tasks
+## Tasks
+- sourcemaps support for css and js
+- image task uses pngquant
+
+## default config:
+
+- sourcemaps are enbaled by default
+- pxToRem is disabled by default
+- es6 via babel is enabled and uses `babel-preset-env` + browserstring
+- added imagemin options
 
 
-#### CSS
+## Tests
 
-Sourcemaps included
-
-#### JS
-
-Runs the following plugins:
-
-1. BabelJS *[configuration](https://github.com/babel/gulp-babel#api)*
-2. with babel-preset-env and a autoprefixer config as defaultConfig.js
+Run tests witch `npm test` (run `gulp dist` first)
 
 # @todo:
-- Port to gulp 4
-- Notifications
-- better error-reporting
+- port to gulp 4?
+- improve desktop notifications and error-reporting
