@@ -29,5 +29,7 @@ require('mj-gulp-workflow')(require('gulp'));
 Run tests witch `npm test` (run `gulp dist` first)
 
 # @todo:
+- error handling in watch task (move dir)
+- remove sourcemaps on dist
 - port to gulp 4?
 - improve desktop notifications and error-reporting
