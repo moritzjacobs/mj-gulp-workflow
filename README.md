@@ -15,6 +15,7 @@ require('mj-gulp-workflow')(require('gulp'));
 ## Tasks
 - sourcemaps support for css and js
 - image task uses pngquant
+- `gulp cleanup` for file removal (sourcemaps)
 
 ## default config:
 
@@ -26,7 +27,7 @@ require('mj-gulp-workflow')(require('gulp'));
 
 ## Tests
 
-Run tests witch `npm test` (run `gulp dist` first)
+Run tests witch `npm test` (run `gulp test` first)
 
 # @todo:
 - error handling in watch task (move dir)
