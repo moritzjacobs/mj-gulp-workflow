@@ -1,3 +1,3 @@
 const bye = () => {
-    return "Bye bye, it was nice to meet you";
-}
+	return "Bye bye, it was nice to meet you";
+};
