@@ -55,6 +55,10 @@ module.exports = {
 		}
 	},
 
+	cleanup: {
+		paths: ["../public/**/*.map"]
+	},
+
 	images: {
 		imagemin: {
 			enabled: true,
