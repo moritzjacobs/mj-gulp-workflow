@@ -3,6 +3,7 @@ const concat = require("gulp-concat");
 const changed = require("gulp-changed");
 const sourcemaps = require("gulp-sourcemaps");
 const gutil = require("gulp-util");
+const gnotify = require("gulp-notify");
 
 module.exports = (gulp, config, paths) => {
 	gulp.task("js", () => {
@@ -25,9 +26,13 @@ module.exports = (gulp, config, paths) => {
 
 			if (isEnabled(config.babeljs.enabled)) {
 				buffer = buffer.pipe(
-					babel(config.babeljs.config).on("error", e => {
-						console.log(e.toString());
-					})
+					babel(config.babeljs.config).on(
+						"error",
+						gnotify.onError({
+							message: "Error: <%= error.message %>",
+							emitError: true
+						})
+					)
 				);
 			}
 
@@ -39,7 +44,13 @@ module.exports = (gulp, config, paths) => {
 				buffer = buffer.pipe(sourcemaps.write("."));
 			}
 
-			buffer.pipe(gulp.dest(dest)).on("error", gutil.log);
+			buffer.pipe(gulp.dest(dest)).on(
+				"error",
+				gnotify.onError({
+					message: "Error: <%= error.message %>",
+					emitError: true
+				})
+			);
 		}
 	});
 };

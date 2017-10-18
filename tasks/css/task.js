@@ -2,6 +2,7 @@ const sass = require("gulp-sass");
 const mkdirp = require("mkdirp");
 const sourcemaps = require("gulp-sourcemaps");
 const changed = require("gulp-changed");
+const gnotify = require("gulp-notify");
 const gutil = require("gulp-util");
 
 module.exports = (gulp, config, paths) => {
@@ -17,7 +18,13 @@ module.exports = (gulp, config, paths) => {
 			}
 
 			buffer = buffer.pipe(
-				sass(config.scss.config).on("error", sass.logError)
+				sass(config.scss.config).on(
+					"error",
+					gnotify.onError({
+						message: "Error: <%= error.message %>",
+						emitError: true
+					})
+				)
 			);
 
 			if (isEnabled(config.autoprefixer.enabled)) {
