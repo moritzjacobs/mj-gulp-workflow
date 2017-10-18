@@ -1,6 +1,9 @@
 const fs = require("fs");
 const testPair = require("../core/testPair.js");
 
+/**
+ * test run for images: dest image files exist and are smaller than src
+ */
 const images = testPair("images");
 for (dest in images) {
 	const image = images[dest];
@@ -16,6 +19,9 @@ for (dest in images) {
 	});
 }
 
+/**
+ * test run for svgs: dest files exist and are smaller than src
+ */
 const svgs = testPair("svg");
 for (dest in svgs) {
 	const svg = svgs[dest];
@@ -31,6 +37,9 @@ for (dest in svgs) {
 	});
 }
 
+/**
+ * test run for copy: files exist
+ */
 const copy = testPair("copy");
 for (dest in copy) {
 	const file = copy[dest];
@@ -41,6 +50,9 @@ for (dest in copy) {
 	});
 }
 
+/**
+ * test run for js: files exist, sourcemaps exist and content is as expected
+ */
 const js = testPair("js");
 for (dest in js) {
 	const file = js[dest];
@@ -60,6 +72,9 @@ for (dest in js) {
 	});
 }
 
+/**
+ * test run for css: files exist, sourcemaps exist and content is as expected
+ */
 const css = testPair("css");
 for (dest in css) {
 	const file = css[dest];
