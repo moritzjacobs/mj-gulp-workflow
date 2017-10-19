@@ -29,8 +29,34 @@ require('mj-gulp-workflow')(require('gulp'));
 
 Run tests witch `npm test` (run `gulp test` first)
 
+---
+
 # @todo:
-- error handling in watch task (move dir)
-- remove sourcemaps on dist
+- cleanup task `--force` option for `del`
 - port to gulp 4?
-- improve desktop notifications and error-reporting
+
+---
+
+# changelog
+
+## 1.2.2
+- merge changelog into README.md
+- fix default config
+
+## 1.2.1
+- Fix run-sequence and cleanup task
+- Filter junk files in task inclusion by glob and remove output dir before running gulp test
+
+## 1.2.0
+- added cleanup task for file removal (sourcemaps)
+- added gulp-notify for errors
+- replaced native gulp.watch with gulp-watch for better error handling
+- added clean task to remove sourcemaps
+
+## 1.1.1
+- cleanup, refactoring and overall code quality
+
+## 1.1.0
+
+- Moved testing to jest
+- Run tests with `npm test` (run `gulp dist` first!)
