@@ -1,5 +1,9 @@
 # changelog
 
+## 1.2.1
+- Fix run-sequence and cleanup task
+- Filter junk files in task inclusion by glob and remove output dir before running gulp test
+
 ## 1.2.0
 - added cleanup task for file removal (sourcemaps)
 - added gulp-notify for errors
