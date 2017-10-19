@@ -58,7 +58,7 @@ module.exports = {
 	},
 
 	cleanup: {
-		paths: ["./test/output/**/*.map"]
+		paths: ["./test/output/**/*.map", "./test/output/deleteme"]
 	},
 
 	images: {
@@ -100,7 +100,8 @@ module.exports = {
 			"./test/output/images/": ["./test/input/images/**/*.svg"]
 		},
 		copy: {
-			"./test/output/favicons/": ["./test/input/favicons/**/*.*"]
+			"./test/output/favicons/": ["./test/input/favicons/**/*.*"],
+			"./test/output/deleteme": ["./test/input/deleteme/**/*.*"]
 		}
 	},
 

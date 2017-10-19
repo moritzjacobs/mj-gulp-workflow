@@ -1,4 +1,5 @@
 const merge = require("merge-stream");
+const gnotify = require("gulp-notify");
 
 module.exports = (gulp, config, paths) => {
 	gulp.task("copy", () => {
@@ -7,7 +8,15 @@ module.exports = (gulp, config, paths) => {
 			const source = paths[dest];
 			dest = replaceEnv(dest);
 
-			const buffer = gulp.src(source).pipe(gulp.dest(dest));
+			let buffer = gulp.src(source);
+
+			buffer = buffer.pipe(gulp.dest(dest)).on(
+				"error",
+				gnotify.onError({
+					message: "Error: <%= error.message %>",
+					emitError: true
+				})
+			);
 
 			if (stream === undefined) {
 				stream = buffer;

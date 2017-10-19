@@ -42,13 +42,24 @@ for (dest in svgs) {
  */
 const copy = testPair("copy");
 for (dest in copy) {
+	if(dest.indexOf("deleteme" >= 0)) {
+		continue;
+	}
 	const file = copy[dest];
-
 	test(`${dest} test files exist`, () => {
 		expect(file.result).toBeDefined();
 		expect(fs.existsSync(file.result));
 	});
 }
+
+/**
+ * test run for cleanup: specified files don't exist
+ */
+
+test(`/deleteme/ is gone`, () => {
+	expect(!fs.existsSync("./test/output/deleteme"));
+});
+
 
 /**
  * test run for js: files exist, sourcemaps exist and content is as expected

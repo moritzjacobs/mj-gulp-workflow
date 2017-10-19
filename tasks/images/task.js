@@ -1,6 +1,7 @@
 const imagemin = require("gulp-imagemin");
 const pngquant = require("imagemin-pngquant");
 const merge = require("merge-stream");
+const gnotify = require("gulp-notify");
 
 module.exports = (gulp, config, paths) => {
 	gulp.task("images", () => {
@@ -17,7 +18,13 @@ module.exports = (gulp, config, paths) => {
 				buffer = buffer.pipe(imagemin(pngquant()));
 			}
 
-			buffer = buffer.pipe(gulp.dest(dest));
+			buffer = buffer.pipe(gulp.dest(dest)).on(
+				"error",
+				gnotify.onError({
+					message: "Error: <%= error.message %>",
+					emitError: true
+				})
+			);
 
 			if (stream === undefined) {
 				stream = buffer;
