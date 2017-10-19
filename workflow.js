@@ -1,5 +1,6 @@
 const fs = require("fs");
 const del = require("del");
+const junk = require("junk");
 const watch = require("gulp-watch");
 const runSequence = require("run-sequence");
 const gutil = require("gulp-util");
@@ -28,7 +29,9 @@ const workflow = gulp => {
 	const config = require("./core/config.js")();
 
 	// Init all tasks
-	const tasks = fs.readdirSync(`${global.moduleRootDir}/tasks/`);
+	const tasks = fs
+		.readdirSync(`${global.moduleRootDir}/tasks/`)
+		.filter(junk.not);
 
 	tasks.forEach(task => {
 		require(`./tasks/${task}/task.js`)(
@@ -43,7 +46,9 @@ const workflow = gulp => {
 	});
 
 	for (const taskName in config.combinedTasks) {
-		gulp.task(taskName, config.combinedTasks[taskName]);
+		gulp.task(taskName, () => {
+			runSequence(config.combinedTasks[taskName]);
+		});
 	}
 
 	gulp.task("watch", () => {

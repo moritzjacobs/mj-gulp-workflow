@@ -5,7 +5,8 @@
 	"description": "A fork of https://github.com/zephir/zephir-gulp-workflow with added sourcemaps and other things.",
 	"main": "workflow.js",
 	"scripts": {
-		"test": "jest"
+		"test": "npm run clean && gulp test && jest",
+		"clean": "rm -rf ./test/output"
 	},
 	"author": "Marc Stampfli <marc.stampfli@zephir.ch> (http://zephir.ch)",
 	"license": "ISC",
@@ -30,6 +31,7 @@
 		"gulp-util": "^3.0.8",
 		"gulp-watch": "^4.3.11",
 		"imagemin-pngquant": "^5.0.1",
+		"junk": "^2.1.0",
 		"mkdirp": "^0.5.1",
 		"postcss-pxtorem": "^4.0.1",
 		"run-sequence": "^2.2.0",
