@@ -4,9 +4,12 @@ const changed = require("gulp-changed");
 const sourcemaps = require("gulp-sourcemaps");
 const gutil = require("gulp-util");
 const gnotify = require("gulp-notify");
+const merge = require("merge-stream");
 
 module.exports = (gulp, config, paths) => {
 	gulp.task("js", () => {
+		let stream;
+
 		for (let dest in paths) {
 			const source = paths[dest];
 			dest = replaceEnv(dest);
@@ -44,13 +47,21 @@ module.exports = (gulp, config, paths) => {
 				buffer = buffer.pipe(sourcemaps.write("."));
 			}
 
-			buffer.pipe(gulp.dest(dest)).on(
+			buffer = buffer.pipe(gulp.dest(dest)).on(
 				"error",
 				gnotify.onError({
 					message: "Error: <%= error.message %>",
 					emitError: true
 				})
 			);
+
+			if (stream === undefined) {
+				stream = buffer;
+			} else {
+				stream = merge(stream, buffer);
+			}
 		}
+
+		return stream;
 	});
 };

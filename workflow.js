@@ -46,8 +46,8 @@ const workflow = gulp => {
 	});
 
 	for (const taskName in config.combinedTasks) {
-		gulp.task(taskName, () => {
-			runSequence(config.combinedTasks[taskName]);
+		gulp.task(taskName, (cb) => {
+			runSequence.apply(this, config.combinedTasks[taskName], cb);
 		});
 	}
 
