@@ -37,10 +37,6 @@ module.exports = (gulp, config, paths) => {
 				);
 			}
 
-			if (isEnabled(config.pxToRem.enabled)) {
-				buffer = require("./pxToRem.js")(buffer, config.pxToRem.config);
-			}
-
 			if (isEnabled(config.cleanCss.enabled)) {
 				buffer = require("./cleanCss.js")(
 					buffer,

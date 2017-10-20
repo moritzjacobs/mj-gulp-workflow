@@ -21,10 +21,6 @@ module.exports = {
 			}
 		},
 
-		pxToRem: {
-			enabled: false
-		},
-
 		cleanCss: {
 			enabled: true,
 			config: {
@@ -110,7 +106,7 @@ module.exports = {
 		default: ["build", "watch"],
 		dist: ["build", "cleanup"],
 		build: [["images", "svg", "css", "js", "copy"]],
-		test: ["build"],
+		test: ["build"]
 	},
 
 	watchTask: {
