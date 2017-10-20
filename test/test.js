@@ -1,5 +1,5 @@
 const fs = require("fs");
-const testPair = require("../core/testPair.js");
+const testPair = require("../lib/testPair.js");
 
 /**
  * test run for images: dest image files exist and are smaller than src

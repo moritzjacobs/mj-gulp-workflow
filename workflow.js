@@ -9,8 +9,8 @@ imagemin = require("gulp-imagemin");
 
 global = {};
 
-isEnabled = require("./helpers/isEnabled.js");
-replaceEnv = require("./helpers/replaceEnv.js");
+isEnabled = require("./lib/isEnabled.js");
+replaceEnv = require("./lib/replaceEnv.js");
 
 argv = require("yargs")
 	.alias("e", "env")
@@ -27,7 +27,7 @@ const workflow = gulp => {
 	global.appRootDir = require("app-root-dir").get();
 	global.runFrom = global.appRootDir;
 
-	const config = require("./core/config.js")();
+	const config = require("./lib/config.js")();
 
 	// Init all tasks
 	const tasks = fs
