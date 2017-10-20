@@ -1,11 +1,12 @@
 {
 	"name": "mj-gulp-workflow",
-	"version": "1.2.2a",
+	"version": "1.2.3",
 	"repository": "https://github.com/moritzjacobs/mj-gulp-workflow",
 	"description": "A fork of https://github.com/zephir/zephir-gulp-workflow with added sourcemaps and other things.",
 	"main": "workflow.js",
 	"scripts": {
-		"test": "npm run clean && gulp test && jest",
+		"jest": "jest",
+		"test": "npm run clean; cd ./test; gulp test; cd ..; jest",
 		"clean": "rm -rf ./test/output"
 	},
 	"author": "Marc Stampfli <marc.stampfli@zephir.ch> (http://zephir.ch)",
