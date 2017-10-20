@@ -42,7 +42,7 @@ for (dest in svgs) {
  */
 const copy = testPair("copy");
 for (dest in copy) {
-	if(dest.indexOf("deleteme" >= 0)) {
+	if (dest.indexOf("deleteme" >= 0)) {
 		continue;
 	}
 	const file = copy[dest];
@@ -59,7 +59,6 @@ for (dest in copy) {
 test(`/deleteme/ is gone`, () => {
 	expect(!fs.existsSync("./test/output/deleteme"));
 });
-
 
 /**
  * test run for js: files exist, sourcemaps exist and content is as expected

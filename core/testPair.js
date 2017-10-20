@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const config = require("../test/compileConfig.js");
 
-module.exports = function(task, runFrom=process.cwd()+"/test") {
+module.exports = function(task, runFrom = process.cwd() + "/test") {
 	const paths = config.paths[task];
 	let ret = [];
 
