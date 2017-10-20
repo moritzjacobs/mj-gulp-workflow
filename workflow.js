@@ -25,6 +25,7 @@ const workflow = gulp => {
 
 	global.moduleRootDir = __dirname;
 	global.appRootDir = require("app-root-dir").get();
+	global.runFrom = global.appRootDir;
 
 	const config = require("./core/config.js")();
 

@@ -2,9 +2,9 @@ const glob = require("glob");
 const path = require("path");
 const fs = require("fs");
 
-const config = require("../compileConfig.js");
+const config = require("../test/compileConfig.js");
 
-module.exports = function(task) {
+module.exports = function(task, runFrom=process.cwd()+"/test") {
 	const paths = config.paths[task];
 	let ret = [];
 
@@ -13,6 +13,7 @@ module.exports = function(task) {
 		for (src of srcs) {
 			let compareToGlob = src.replace("/input/", "/compare/");
 			compareToGlob = compareToGlob.replace(".scss", ".css");
+			compareToGlob = path.join(runFrom, compareToGlob);
 			const files = glob(compareToGlob, { sync: true });
 
 			ret[src] = {};

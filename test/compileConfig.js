@@ -58,7 +58,7 @@ module.exports = {
 	},
 
 	cleanup: {
-		paths: ["./test/output/**/*.map", "./test/output/deleteme"]
+		paths: ["./output/**/*.map", "./output/deleteme"]
 	},
 
 	images: {
@@ -83,25 +83,25 @@ module.exports = {
 	paths: {
 		// "DESTINATION" : ['SOURCE']
 		css: {
-			"./test/output/css/": ["./test/input/css/**/*.scss"]
+			"./output/css/": ["./input/css/**/*.scss"]
 		},
 		js: {
-			"./test/output/js/script.js": ["./test/input/js/**/*.js"]
+			"./output/js/script.js": ["./input/js/**/*.js"]
 		},
 		images: {
-			"./test/output/images/": [
-				"./test/input/images/**/*.jpeg",
-				"./test/input/images/**/*.jpg",
-				"./test/input/images/**/*.png",
-				"./test/input/images/**/*.gif"
+			"./output/images/": [
+				"./input/images/**/*.jpeg",
+				"./input/images/**/*.jpg",
+				"./input/images/**/*.png",
+				"./input/images/**/*.gif"
 			]
 		},
 		svg: {
-			"./test/output/images/": ["./test/input/images/**/*.svg"]
+			"./output/images/": ["./input/images/**/*.svg"]
 		},
 		copy: {
-			"./test/output/favicons/": ["./test/input/favicons/**/*.*"],
-			"./test/output/deleteme": ["./test/input/deleteme/**/*.*"]
+			"./output/favicons/": ["./input/favicons/**/*.*"],
+			"./output/deleteme": ["./input/deleteme/**/*.*"]
 		}
 	},
 
