@@ -1,6 +1,7 @@
-module.exports = {
-	version: "0.0.2",
+const imagemin = require("gulp-imagemin");
+const browserlist = ["> 0.1%"];
 
+module.exports = {
 	css: {
 		scss: {
 			config: {
@@ -15,7 +16,7 @@ module.exports = {
 		autoprefixer: {
 			enabled: true,
 			config: {
-				browsers: ["> 0.1%"]
+				browsers: browserlist
 			}
 		},
 
@@ -31,6 +32,9 @@ module.exports = {
 		sourcemaps: {
 			enabled: true
 		},
+		browserify: {
+			enabled: true
+		},
 
 		babeljs: {
 			enabled: true,
@@ -42,7 +46,7 @@ module.exports = {
 						"env",
 						{
 							targets: {
-								browsers: ["> 0.1%"]
+								browsers: browserlist
 							}
 						}
 					]
