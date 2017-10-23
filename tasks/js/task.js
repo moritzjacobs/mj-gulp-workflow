@@ -4,6 +4,7 @@ const changed = require("gulp-changed");
 const sourcemaps = require("gulp-sourcemaps");
 const gutil = require("gulp-util");
 const gnotify = require("gulp-notify");
+const browserify = require('gulp-browserify');
 const merge = require("merge-stream");
 
 module.exports = (gulp, config, paths) => {
@@ -27,6 +28,16 @@ module.exports = (gulp, config, paths) => {
 				buffer = buffer.pipe(sourcemaps.init());
 			}
 
+
+			if (isEnabled(config.browserify.enabled)) {
+				buffer = buffer.pipe(browserify());	
+			}
+			
+
+			if (isFile) {
+				buffer = buffer.pipe(concat(file));
+			}
+
 			if (isEnabled(config.babeljs.enabled)) {
 				buffer = buffer.pipe(
 					babel(config.babeljs.config).on(
@@ -37,10 +48,6 @@ module.exports = (gulp, config, paths) => {
 						})
 					)
 				);
-			}
-
-			if (isFile) {
-				buffer = buffer.pipe(concat(file));
 			}
 
 			if (isEnabled(config.sourcemaps.enabled)) {
