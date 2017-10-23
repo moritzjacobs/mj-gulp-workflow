@@ -1,1 +1,0 @@
-{"version":3,"sources":["file1.js","file2.js"],"names":["hi","bye"],"mappings":"aAAA,QAASA,GAAT,EAAc,CACb,MAAO,mBACP;aCFD,GAAMC,KAAM,QAANA,IAAM,EAAM,CACjB,MAAO,kCACP,CAFD","file":"script.js","sourcesContent":["function hi() {\n\treturn \"hi, i am number 1\";\n}\n","const bye = () => {\n\treturn \"Bye bye, it was nice to meet you\";\n};\n"]}
