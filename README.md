@@ -2,9 +2,17 @@ A fork of [zephir/zephir-gulp-workflow](https://github.com/zephir/zephir-gulp-wo
 
 # differences to zephir-gulp-workflow:
 
+## changed functionality
+- sourcemaps
+- broswerify
+- pngquant
+- `gulp cleanup` for file removal (sourcemaps)
+- gulp-notify
+
 ## conventions
 - config files are located at the root of your `package.json` and are called `gulp-config.js` (not `compileConfig.js` as with `zephir-gulp-workflow`)
 - sourcemaps are enabled by default
+- browserify is enabled by default
 - pxToRem is removed
 - es6 via babel is enabled and uses `babel-preset-env` + browserstring
 - added imagemin options
@@ -12,16 +20,12 @@ A fork of [zephir/zephir-gulp-workflow](https://github.com/zephir/zephir-gulp-wo
 ## Installation
 
 1. Create a package.json in your project **>>** `npm init`
-2. Install dependencies **>>** `npm i --save-dev gulp mj-gulp-workflow babel-preset-env`
+2. Install dependencies **>>** `npm i --save-dev gulp mj-gulp-workflow`
 3. Create a new `gulpfile.js` and add the content you find below
 
 ```js
 require('mj-gulp-workflow')(require('gulp'));
 ```
-
-## Tasks
-- image task uses pngquant
-- `gulp cleanup` for file removal (sourcemaps)
 
 
 ## Tests
@@ -31,15 +35,19 @@ Run tests witch `npm test`
 ---
 
 # @todo:
-- cleanup task `--force` option for `del`
-- test drive babel in different locations
 - port to gulp 4?
 
 ---
 
 # changelog
 
-# 1.2.3
+## 1.2.4
+- remove config version check
+- fix cleanup task for paths outside gulp directory
+- fix babel when gulp task is in subdirectory
+- add browserify (optional)
+
+## 1.2.3
 - add tests for copy and cleanup tasks
 - code refactoring
 - renamed `compileConfig.js` and `defaultConfig.js`
