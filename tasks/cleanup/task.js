@@ -6,6 +6,6 @@ module.exports = (gulp, config, paths) => {
 		for (i in config.paths) {
 			dels.push(config.paths[i]);
 		}
-		return del(dels);
+		return del(dels, { force: true });
 	});
 };
