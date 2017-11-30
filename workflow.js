@@ -14,7 +14,7 @@ replaceEnv = require("./lib/replaceEnv.js");
 
 argv = require("yargs")
 	.alias("e", "env")
-	.default("env", "local").argv;
+	.default("env", "dev").argv;
 
 global.env = argv.env;
 

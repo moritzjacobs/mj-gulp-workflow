@@ -10,7 +10,7 @@ module.exports = {
 		},
 
 		sourcemaps: {
-			enabled: true
+			enabled: "dev"
 		},
 
 		autoprefixer: {
@@ -30,7 +30,7 @@ module.exports = {
 
 	js: {
 		sourcemaps: {
-			enabled: true
+			enabled: "dev"
 		},
 		browserify: {
 			enabled: true
@@ -56,6 +56,7 @@ module.exports = {
 	},
 
 	cleanup: {
+		enabled: "dist",
 		paths: ["../public/**/*.map"]
 	},
 
@@ -105,9 +106,9 @@ module.exports = {
 
 	// All tasks above are available (css, js, images and svg)
 	combinedTasks: {
-		default: ["build", "watch"],
+		default: [["build", "watch"]],
 		dist: ["build", "cleanup"],
-		build: [["images", "svg", "css", "js", "copy"]],
+		build: ["images", "svg", "css", "js", "copy"],
 		test: ["build"]
 	},
 

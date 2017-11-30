@@ -27,6 +27,9 @@ A fork of [zephir/zephir-gulp-workflow](https://github.com/zephir/zephir-gulp-wo
 require('mj-gulp-workflow')(require('gulp'));
 ```
 
+## Usage
+
+Run `gulp dist --env dist` for distribution, otherwise just `gulp`.
 
 ## Tests
 
@@ -40,6 +43,10 @@ Run tests witch `npm test`
 ---
 
 # changelog
+
+## 1.2.5
+- improved task defaults, `dev` and `dist` as `--env` options, defaults to `dev`.
+- updated dependencies
 
 ## 1.2.4
 - remove config version check
