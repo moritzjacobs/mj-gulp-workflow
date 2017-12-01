@@ -11,10 +11,9 @@ A fork of [zephir/zephir-gulp-workflow](https://github.com/zephir/zephir-gulp-wo
 
 ## conventions
 - config files are located at the root of your `package.json` and are called `gulp-config.js` (not `compileConfig.js` as with `zephir-gulp-workflow`)
-- sourcemaps are enabled by default
-- browserify is enabled by default
+- sourcemaps are enabled for dev env by default
 - pxToRem is removed
-- es6 via babel is enabled and uses `babel-preset-env` + browserstring
+- es6 via babel and browserify are enabled for a specific task and source folder per default (`babel-preset-env` + browserstring)
 - added imagemin options
 
 ## Installation
@@ -27,6 +26,21 @@ A fork of [zephir/zephir-gulp-workflow](https://github.com/zephir/zephir-gulp-wo
 require('mj-gulp-workflow')(require('gulp'));
 ```
 
+## First run
+
+run `gulp` to create a `gulp-config.js`, configure to taste.
+
+## Configuration
+
+tasks in `combinedTasks` are run in sequence, so if you want parallel execution you would have to put them in another array inside `combinedTasks`, e.g.:
+
+```js
+combinedTasks: {
+	default: [["dist", "watch"]], // runs parallel
+	dist: ["es6", "js", "images", "svg", "css", "copy", "clean"], // runs sequential
+},
+```
+
 ## Usage
 
 Run `gulp dist --env dist` for distribution, otherwise just `gulp`.
@@ -34,6 +48,8 @@ Run `gulp dist --env dist` for distribution, otherwise just `gulp`.
 ## Tests
 
 Run tests witch `npm test`
+
+Run test http server with `npm run testd` => <http://localhost:8080>, then look at the console.
 
 ---
 
@@ -43,6 +59,10 @@ Run tests witch `npm test`
 ---
 
 # changelog
+
+## 1.3.0
+- move babel-transformation for es6 files to own source/task combo
+- `cleanup` task is now `clean`
 
 ## 1.2.5
 - improved task defaults, `dev` and `dist` as `--env` options, defaults to `dev`.
