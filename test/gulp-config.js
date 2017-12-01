@@ -1,7 +1,7 @@
 let testConfig = require("../gulp-config-default");
 
-testConfig.cleanup = {
-	paths: ["./output/**/*.map", "./output/deleteme"]
+testConfig.clean = {
+	paths: ["./output/favicons/deleteme.txt"]
 };
 
 testConfig.paths = {
@@ -9,8 +9,14 @@ testConfig.paths = {
 	css: {
 		"./output/css/": ["./input/css/**/*.scss"]
 	},
+	es6: {
+		"./input/tmp/": ["./input/es6/*.js"]
+	},
+	es6Watch: {
+		watch: ["./input/es6/**/*.js"]
+	},
 	js: {
-		"./output/js/script.js": ["./input/js/*.js"]
+		"./output/js/script.js": ["./input/tmp/*.js", "./input/js/*.js"]
 	},
 	images: {
 		"./output/images/": [
@@ -25,8 +31,9 @@ testConfig.paths = {
 	},
 	copy: {
 		"./output/favicons/": ["./input/favicons/**/*.*"],
-		"./output/deleteme": ["./input/deleteme/**/*.*"]
 	}
 };
+
+testConfig.combinedTasks.test = ["es6", "js", "images", "svg", "css", "copy"];
 
 module.exports = testConfig;

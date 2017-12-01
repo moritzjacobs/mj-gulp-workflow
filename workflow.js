@@ -5,13 +5,12 @@ const watch = require("gulp-watch");
 const runSequence = require("run-sequence");
 const gutil = require("gulp-util");
 
-imagemin = require("gulp-imagemin");
-
+// define globals
 global = {};
-
 isEnabled = require("./lib/isEnabled.js");
 replaceEnv = require("./lib/replaceEnv.js");
 
+// process cli args
 argv = require("yargs")
 	.alias("e", "env")
 	.default("env", "dev").argv;
@@ -23,6 +22,7 @@ console.log(`Environment: ${global.env}`);
 const workflow = gulp => {
 	if (!gulp) return false;
 
+	// define more globals
 	global.moduleRootDir = __dirname;
 	global.appRootDir = require("app-root-dir").get();
 	global.runFrom = global.appRootDir;
@@ -34,6 +34,7 @@ const workflow = gulp => {
 		.readdirSync(`${global.moduleRootDir}/tasks/`)
 		.filter(junk.not);
 
+	// autorequire
 	tasks.forEach(task => {
 		require(`./tasks/${task}/task.js`)(
 			gulp,
@@ -42,17 +43,16 @@ const workflow = gulp => {
 		);
 	});
 
-	gulp.task("clean", () => {
-		del([global.env]);
-	});
-
+	// create combined tasks as sequential runs of autoincluded tasks
 	for (const taskName in config.combinedTasks) {
 		gulp.task(taskName, (cb) => {
 			runSequence.apply(this, config.combinedTasks[taskName], cb);
 		});
 	}
 
+	// special watch task
 	gulp.task("watch", () => {
+		// watch for every path group
 		for (const pathGroup in config.watchTask) {
 			const sources = config.paths[pathGroup];
 			const tasks = config.watchTask[pathGroup];
@@ -66,11 +66,6 @@ const workflow = gulp => {
 						runSequence(tasks);
 					});
 				}
-			} else {
-				watch(source).on("change", event => {
-					gutil.log(source + " changed");
-					runSequence(tasks);
-				});
 			}
 		}
 	});
