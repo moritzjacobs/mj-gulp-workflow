@@ -1,3 +1,2 @@
-const bye = () => {
-	return "Bye bye, it was nice to meet you";
-};
+hi();
+console.log("am I working?");

@@ -2,10 +2,11 @@
 
 @import "partials/reset";
 
-$w: 10px;
+$c: red;
+$w: 20px;
 
 .foo {
-	display: flex;
+	background-color: $c;
 
 	.bar {
 		padding: $w;

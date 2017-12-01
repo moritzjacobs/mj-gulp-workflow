@@ -53,53 +53,38 @@ for (dest in copy) {
 }
 
 /**
- * test run for cleanup: specified files don't exist
- */
-
-test(`/deleteme/ is gone`, () => {
-	expect(!fs.existsSync("./test/output/deleteme"));
-});
-
-/**
- * test run for js: files exist, sourcemaps exist and content is as expected
+ * test run for js: files exist, and content is as expected
  */
 const js = testPair("js");
+delete js['./input/tmp/*.js'];
 for (dest in js) {
 	const file = js[dest];
 
-	test(`destination file exists: ${file.result}`, () => {
+	test(`js file exists: ${file.result}`, () => {
 		expect(fs.existsSync(file.result)).toBe(true);
 	});
 
-	test(`file content is as expected: ${file.result}`, () => {
+	test(`js file content is as expected: ${file.result}`, () => {
 		const r = fs.readFileSync(file.result, "utf8");
 		const c = fs.readFileSync(file.compareTo, "utf8");
 		expect(r).toBe(c);
 	});
-
-	test(`sourcemap file exists: ${file.result}.map`, () => {
-		expect(fs.existsSync(file.result + ".map")).toBe(true);
-	});
 }
 
 /**
- * test run for css: files exist, sourcemaps exist and content is as expected
+ * test run for css: files exist, and content is as expected
  */
 const css = testPair("css");
 for (dest in css) {
 	const file = css[dest];
 
-	test(`destination file exists: ${file.result}`, () => {
+	test(`css file exists: ${file.result}`, () => {
 		expect(fs.existsSync(file.result)).toBe(true);
 	});
 
-	test(`file content is as expected: ${file.result}`, () => {
+	test(`css file content is as expected: ${file.result}`, () => {
 		const r = fs.readFileSync(file.result, "utf8");
 		const c = fs.readFileSync(file.compareTo, "utf8");
 		expect(r).toBe(c);
-	});
-
-	test(`sourcemap file exists: ${file.result}.map`, () => {
-		expect(fs.existsSync(file.result + ".map")).toBe(true);
 	});
 }
