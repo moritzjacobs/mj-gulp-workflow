@@ -1,9 +1,8 @@
-
 const babel = require("gulp-babel");
 const concat = require("gulp-concat");
 const sourcemaps = require("gulp-sourcemaps");
 const gnotify = require("gulp-notify");
-const browserify = require('gulp-browserify');
+const browserify = require("gulp-browserify");
 const merge = require("merge-stream");
 
 module.exports = (name, gulp, config, paths) => {
@@ -27,11 +26,17 @@ module.exports = (name, gulp, config, paths) => {
 				buffer = buffer.pipe(sourcemaps.init());
 			}
 
-
 			if (isEnabled(config.browserify.enabled)) {
-				buffer = buffer.pipe(browserify());	
+				buffer = buffer.pipe(
+					browserify().on(
+						"error",
+						gnotify.onError({
+							message: "Error: <%= error.message %>",
+							emitError: true
+						})
+					)
+				);
 			}
-			
 
 			if (isFile) {
 				buffer = buffer.pipe(concat(file));
