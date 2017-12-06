@@ -60,6 +60,9 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 
 # changelog
 
+## 1.3.2
+- updated dependencies
+
 ## 1.3.1
 - fixed bug that made gulp process crash on first run
 
