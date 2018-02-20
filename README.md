@@ -60,6 +60,9 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 
 # changelog
 
+## 1.3.3
+- updated dependencies including major versions
+
 ## 1.3.2
 - updated dependencies
 
