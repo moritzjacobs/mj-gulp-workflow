@@ -2,8 +2,7 @@
 	"name": "mj-gulp-workflow",
 	"version": "1.3.2",
 	"repository": "https://github.com/moritzjacobs/mj-gulp-workflow",
-	"description":
-		"A fork of https://github.com/zephir/zephir-gulp-workflow with added sourcemaps and other things.",
+	"description": "A fork of https://github.com/zephir/zephir-gulp-workflow with added sourcemaps and other things.",
 	"main": "workflow.js",
 	"scripts": {
 		"dev": "cd ./test; gulp",
@@ -20,22 +19,22 @@
 	"license": "ISC",
 	"dependencies": {
 		"app-root-dir": "^1.0.2",
-		"autoprefixer": "^7.2.1",
+		"autoprefixer": "^7.2.6",
 		"babel-core": "^6.26.0",
 		"babel-preset-env": "^1.6.0",
 		"del": "^3.0.0",
 		"glob": "^7.1.2",
 		"gulp": "^3.9.1",
-		"gulp-babel": "^7.0.0",
+		"gulp-babel": "^7.0.1",
 		"gulp-browserify": "^0.5.1",
-		"gulp-changed": "^3.1.1",
-		"gulp-clean-css": "^3.9.0",
+		"gulp-changed": "^3.2.0",
+		"gulp-clean-css": "^3.9.2",
 		"gulp-concat": "^2.6.1",
-		"gulp-imagemin": "^4.0.0",
-		"gulp-notify": "^3.0.0",
-		"gulp-postcss": "^7.0.0",
+		"gulp-imagemin": "^4.1.0",
+		"gulp-notify": "^3.2.0",
+		"gulp-postcss": "^7.0.1",
 		"gulp-sass": "^3.1.0",
-		"gulp-sourcemaps": "^2.6.1",
+		"gulp-sourcemaps": "^2.6.4",
 		"gulp-svgmin": "^1.2.4",
 		"gulp-util": "^3.0.8",
 		"gulp-watch": "^4.3.11",
@@ -45,8 +44,8 @@
 		"merge-stream": "^1.0.1",
 		"mkdirp": "^0.5.1",
 		"postcss-pxtorem": "^4.0.1",
-		"run-sequence": "^2.2.0",
-		"yargs": "^10.0.1"
+		"run-sequence": "^2.2.1",
+		"yargs": "^10.1.2"
 	},
 	"devDependencies": {
 		"jest": "^21.2.1"
