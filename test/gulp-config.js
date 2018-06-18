@@ -1,39 +1,39 @@
-let testConfig = require("../gulp-config-default");
+let testConfig = require('../gulp-config-default')
 
 testConfig.clean = {
-	paths: ["./output/favicons/deleteme.txt"]
-};
+	paths: ['./output/favicons/deleteme.txt']
+}
 
 testConfig.paths = {
 	// "DESTINATION" : ['SOURCE']
 	css: {
-		"./output/css/": ["./input/css/**/*.scss"]
+		'./output/css/': ['./input/css/**/*.scss']
 	},
 	es6: {
-		"./input/tmp/": ["./input/es6/*.js"]
+		'./input/tmp/': ['./input/es6/*.js']
 	},
 	es6Watch: {
-		watch: ["./input/es6/**/*.js"]
+		watch: ['./input/es6/**/*.js']
 	},
 	js: {
-		"./output/js/script.js": ["./input/tmp/*.js", "./input/js/*.js"]
+		'./output/js/script.js': ['./input/tmp/*.js', './input/js/*.js']
 	},
 	images: {
-		"./output/images/": [
-			"./input/images/**/*.jpeg",
-			"./input/images/**/*.jpg",
-			"./input/images/**/*.png",
-			"./input/images/**/*.gif"
+		'./output/images/': [
+			'./input/images/**/*.jpeg',
+			'./input/images/**/*.jpg',
+			'./input/images/**/*.png',
+			'./input/images/**/*.gif'
 		]
 	},
 	svg: {
-		"./output/images/": ["./input/images/**/*.svg"]
+		'./output/images/': ['./input/images/**/*.svg']
 	},
 	copy: {
-		"./output/favicons/": ["./input/favicons/**/*.*"],
+		'./output/favicons/': ['./input/favicons/**/*.*']
 	}
-};
+}
 
-testConfig.combinedTasks.test = ["es6", "js", "images", "svg", "css", "copy"];
+testConfig.combinedTasks.test = ['es6', 'js', 'images', 'svg', 'css', 'copy']
 
-module.exports = testConfig;
+module.exports = testConfig

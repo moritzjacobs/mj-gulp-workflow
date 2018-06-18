@@ -2,16 +2,19 @@
 	"name": "mj-gulp-workflow",
 	"version": "1.3.4",
 	"repository": "https://github.com/moritzjacobs/mj-gulp-workflow",
-	"description":
-		"A fork of https://github.com/zephir/zephir-gulp-workflow with added sourcemaps and other things.",
-	"main": "workflow.js",
+	"description": "A fork of https://github.com/zephir/zephir-gulp-workflow with added sourcemaps and other things.",
+	"main": "dist/index.js",
 	"scripts": {
+		"esw": "esw --fix -w",
+		"cli": "npm run start",
 		"dev": "cd ./test; gulp",
 		"dist": "cd ./test; gulp dist --env dist",
 		"jest": "jest",
-		"test": "npm run clean; npm run dist; jest",
+		"test": "npm run babel-dist; npm run clean; npm run dist; jest",
 		"clean": "rm -rf ./test/output",
-		"testd": "http-server ./test -o"
+		"testd": "http-server ./test -o",
+		"babel-dist": "babel src -d dist",
+		"start": "babel-node cli.js --presets=env"
 	},
 	"contributors": [
 		"Marc Stampfli <marc.stampfli@zephir.ch> (http://zephir.ch)",
@@ -21,7 +24,6 @@
 	"dependencies": {
 		"app-root-dir": "^1.0.2",
 		"autoprefixer": "^8.0.0",
-		"babel-core": "^6.26.0",
 		"babel-preset-env": "^1.6.0",
 		"del": "^3.0.0",
 		"glob": "^7.1.2",
@@ -41,6 +43,7 @@
 		"gulp-watch": "^5.0.0",
 		"http-server": "^0.11.1",
 		"imagemin-pngquant": "^5.0.1",
+		"inquirer": "^6.0.0",
 		"junk": "^2.1.0",
 		"merge-stream": "^1.0.1",
 		"mkdirp": "^0.5.1",
@@ -49,6 +52,18 @@
 		"yargs": "^11.0.0"
 	},
 	"devDependencies": {
-		"jest": "^22.3.0"
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.3",
+		"babel-jest": "^23.0.1",
+		"eslint": "^4.19.1",
+		"eslint-config-standard": "^11.0.0",
+		"eslint-plugin-import": "^2.12.0",
+		"eslint-plugin-jest": "^21.17.0",
+		"eslint-plugin-node": "^6.0.1",
+		"eslint-plugin-promise": "^3.8.0",
+		"eslint-plugin-standard": "^3.1.0",
+		"eslint-watch": "^3.1.5",
+		"jest": "^22.3.0",
+		"regenerator-runtime": "^0.11.1"
 	}
 }

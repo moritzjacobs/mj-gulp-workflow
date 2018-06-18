@@ -1,2 +1,2 @@
-hi();
-console.log("am I working?");
+hi()
+console.log('am I working?')
