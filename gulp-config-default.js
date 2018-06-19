@@ -95,6 +95,13 @@ module.exports = {
 		}
 	},
 
+	favicons: {
+		enabled: true,
+		themeColor: '#cafe23',
+		iconsPath: './',
+		appName: 'FoobarBaz'
+	},
+
 	paths: {
 		// "DESTINATION" : ['SOURCE']
 		css: {
@@ -124,15 +131,17 @@ module.exports = {
 			'../public/img/': ['../src/img/**/*.svg']
 		},
 		copy: {
-			'../public/fonts/': ['../src/fonts/**/*.*'],
-			'../public/favicons/': ['../src/favicons/**/*.*']
+			'../public/fonts/': ['../src/fonts/**/*.*']
+		},
+		favicons: {
+			'../public/favicons/': ['../src/favicons/**/*.png']
 		}
 	},
 
 	// All tasks above are available (css, js, images and svg)
 	combinedTasks: {
 		default: [['dist', 'watch']],
-		dist: ['es6', 'js', 'images', 'svg', 'css', 'copy', 'clean']
+		dist: ['favicons', 'es6', 'js', 'images', 'svg', 'css', 'copy', 'clean']
 	},
 
 	watchTask: {

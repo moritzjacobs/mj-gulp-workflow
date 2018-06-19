@@ -1,3 +1,5 @@
+const glob = require('glob')
+const path = require('path')
 const fs = require('fs')
 const testPair = require('./testPair.js')
 
@@ -50,6 +52,26 @@ for (const dest in copy) {
 		expect(file.result).toBeDefined()
 		expect(fs.existsSync(file.result))
 	})
+}
+
+/**
+ * test run for favicons: files exist
+ */
+const favicons = testPair('favicons')
+for (let dest in favicons) {
+	dest = path.join(process.cwd(), 'test', dest)
+	const files = glob(dest, { sync: true })
+
+	for (let file of files) {
+		const slug = path.basename(file, '.png')
+		let dir = path.dirname(file)
+		dir = dir.replace('/input/', '/output/')
+		const testFile = path.join(dir, slug, 'favicon.ico')
+
+		test(`favicon exists: ${testFile}`, () => {
+			expect(fs.existsSync(testFile)).toBe(true)
+		})
+	}
 }
 
 /**
