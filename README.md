@@ -8,6 +8,7 @@ A fork of [zephir/zephir-gulp-workflow](https://github.com/zephir/zephir-gulp-wo
 - pngquant
 - `gulp cleanup` for file removal (sourcemaps)
 - gulp-notify
+- favicons
 
 ## conventions
 - config files are located at the root of your `package.json` and are called `gulp-config.js` (not `compileConfig.js` as with `zephir-gulp-workflow`)
@@ -59,6 +60,9 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 ---
 
 # changelog
+
+## 1.4.0–1.4.1
+- Added favicon task using realfavicongenerator.net's CLI module
 
 ## 1.3.3
 - updated dependencies including major versions

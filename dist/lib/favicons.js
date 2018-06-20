@@ -18,7 +18,9 @@ module.exports = (config, dest) => through.obj((vinylFile, encoding, callback) =
 	log(`processing favicon from RFG-API: ${faviconSlug}`);
 	log(`saving ${faviconSlug} favicons to ${outputPath}`);
 
-	require('../../node_modules/cli-real-favicon/common');
+	const gulpLocation = path.dirname(require.resolve('gulp'));
+	const nodeModules = path.dirname(gulpLocation);
+	require(path.join(nodeModules, 'cli-real-favicon/common'));
 	const rfg = rfgApi.init();
 	const request = rfg.createRequest({
 		// eslint-disable-next-line no-undef
