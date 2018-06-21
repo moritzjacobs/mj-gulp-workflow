@@ -61,6 +61,9 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 
 # changelog
 
+## 1.4.2
+- Fix installation issues
+
 ## 1.4.0–1.4.1
 - Added favicon task using realfavicongenerator.net's CLI module
 

@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs');
+const path = require('path');
 
 const compileConfigExistsInAppRootDir = global => fs.existsSync(`${global.appRootDir}/gulp-config.js`);
 
@@ -11,7 +12,7 @@ const compileConfigExistsInCwd = global => {
 
 module.exports = global => {
 	if (!compileConfigExistsInAppRootDir(global) && !compileConfigExistsInCwd(global)) {
-		const defaultConfig = fs.readFileSync(`${global.moduleRootDir}/gulp-config-default.js`, 'UTF-8');
+		const defaultConfig = fs.readFileSync(path.join(global.moduleRootDir, '..', 'gulp-config-default.js'), 'UTF-8');
 
 		// Write the default compileConfig file
 		fs.writeFileSync(`${global.appRootDir}/gulp-config.js`, defaultConfig);
