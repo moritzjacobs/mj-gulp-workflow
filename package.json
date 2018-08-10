@@ -1,6 +1,6 @@
 {
 	"name": "mj-gulp-workflow",
-	"version": "1.4.2",
+	"version": "1.5.0",
 	"repository": "https://github.com/moritzjacobs/mj-gulp-workflow",
 	"description": "A fork of https://github.com/zephir/zephir-gulp-workflow with added sourcemaps and other things.",
 	"main": "dist/index.js",
@@ -9,9 +9,11 @@
 		"cli": "npm run start",
 		"dev": "cd ./test; gulp",
 		"dist": "cd ./test; gulp dist --env dist",
+
+		"pretest": "npm run babel-dist; npm run clean; cd ./test; gulp test --env dist",
+		"test": "jest",
 		"jest": "jest",
-		"test": "npm run run; jest",
-		"run": "npm run babel-dist; npm run clean; cd ./test; gulp test --env dist",
+
 		"clean": "rm -rf ./test/output",
 		"testd": "http-server ./test -o",
 		"babel-dist": "babel src -d dist",

@@ -46,7 +46,11 @@ combinedTasks: {
 
 Run `gulp dist --env dist` for distribution, otherwise just `gulp`.
 
-## Tests
+## Dev
+
+Dev server: `npm run testd`
+
+Build with `npm run babel-dist`
 
 Run tests witch `npm test`
 
@@ -60,6 +64,9 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 ---
 
 # changelog
+
+## 1.5.0
+- updated dependencies including major versions
 
 ## 1.4.2
 - Fix installation issues
