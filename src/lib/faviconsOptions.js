@@ -1,14 +1,14 @@
-const uniqid = require("uniqid");
+const uniqid = require('uniqid')
 
 module.exports = (iconsPath, themeColor, appName) => {
 	return {
-		masterPicture: "./1024x1024.png",
+		masterPicture: './1024x1024.png',
 		iconsPath,
 		design: {
 			ios: {
-				pictureAspect: "backgroundAndMargin",
+				pictureAspect: 'backgroundAndMargin',
 				backgroundColor: themeColor,
-				margin: "14%",
+				margin: '14%',
 				assets: {
 					ios6AndPriorIcons: false,
 					ios7AndLaterIcons: false,
@@ -19,9 +19,9 @@ module.exports = (iconsPath, themeColor, appName) => {
 			},
 			desktopBrowser: {},
 			windows: {
-				pictureAspect: "noChange",
+				pictureAspect: 'noChange',
 				backgroundColor: themeColor,
-				onConflict: "override",
+				onConflict: 'override',
 				assets: {
 					windows80Ie10Tile: false,
 					windows10Ie11EdgeTiles: {
@@ -34,13 +34,13 @@ module.exports = (iconsPath, themeColor, appName) => {
 				appName
 			},
 			androidChrome: {
-				pictureAspect: "shadow",
+				pictureAspect: 'shadow',
 				themeColor,
 				manifest: {
 					name: appName,
-					display: "standalone",
-					orientation: "notSet",
-					onConflict: "override",
+					display: 'standalone',
+					orientation: 'notSet',
+					onConflict: 'override',
 					declared: true
 				},
 				assets: {
@@ -51,15 +51,15 @@ module.exports = (iconsPath, themeColor, appName) => {
 		},
 		settings: {
 			compression: 2,
-			scalingAlgorithm: "Mitchell",
+			scalingAlgorithm: 'Mitchell',
 			errorOnImageTooSmall: false,
 			readmeFile: true,
 			htmlCodeFile: true,
 			usePathAsIs: false
 		},
 		versioning: {
-			paramName: "v",
+			paramName: 'v',
 			paramValue: uniqid()
 		}
-	};
-};
+	}
+}
