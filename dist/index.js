@@ -8,7 +8,7 @@ const watch = require('gulp-watch');
 
 const runSequence = require('run-sequence');
 
-const gutil = require('gulp-util');
+const log = require('fancy-log');
 
 const argv = require('./lib/argv');
 
@@ -55,7 +55,7 @@ const workflow = gulp => {
         for (const dest in sources) {
           const source = sources[dest];
           watch(source).on('change', event => {
-            gutil.log(`${source} changed`);
+            log(`${source} changed`);
             runSequence(tasks);
           });
         }
