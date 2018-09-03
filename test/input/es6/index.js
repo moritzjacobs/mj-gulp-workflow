@@ -1,2 +1,2 @@
 const foo = require('./foo/foo')
-foo('es6 via babel seems fine')
+foo('required scripts (es6 task) 2/2')
