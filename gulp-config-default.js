@@ -56,7 +56,7 @@ module.exports = {
 		babeljs: {
 			enabled: true,
 			config: {
-				minified: false,
+				minified: true,
 				presets: [
 					[
 						'@babel/preset-env',
