@@ -1,5 +1,5 @@
-'use strict';
+"use strict";
 
 module.exports = env => {
-	return string => string.replace('{env}', env);
+  return string => string.replace('{env}', env);
 };
