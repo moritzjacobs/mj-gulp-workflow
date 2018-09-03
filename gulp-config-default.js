@@ -59,7 +59,7 @@ module.exports = {
 				minified: false,
 				presets: [
 					[
-						'env',
+						'@babel/preset-env',
 						{
 							targets: {
 								browsers: browserlist
