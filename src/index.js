@@ -1,7 +1,6 @@
 const fs = require('fs')
 const junk = require('junk')
 const watch = require('gulp-watch')
-const runSequence = require('run-sequence')
 const log = require('fancy-log')
 const argv = require('./lib/argv')
 const AppRootDir = require('app-root-dir')
@@ -36,13 +35,6 @@ const workflow = gulp => {
 		taskFn(gulp, config[task], config.paths[task])
 	})
 
-	// create combined tasks as sequential runs of autoincluded tasks
-	for (const taskName in config.combinedTasks) {
-		gulp.task(taskName, cb => {
-			runSequence.apply(this, config.combinedTasks[taskName], cb)
-		})
-	}
-
 	// special watch task
 	gulp.task('watch', () => {
 		// watch for every path group
@@ -56,12 +48,17 @@ const workflow = gulp => {
 
 					watch(source).on('change', event => {
 						log(`${source} changed`)
-						runSequence(tasks)
+						gulp.series(tasks)
 					})
 				}
 			}
 		}
 	})
+
+	// create combined tasks as sequential runs of autoincluded tasks
+	for (const taskName in config.combinedTasks) {
+		gulp.task(taskName, gulp.series(config.combinedTasks[taskName]))
+	}
 }
 
 module.exports = workflow

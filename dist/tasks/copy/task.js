@@ -9,7 +9,7 @@ const argv = require('../../lib/argv');
 const replaceEnv = require('../../lib/replaceEnv.js')(argv.env);
 
 module.exports = (gulp, config, paths) => {
-  gulp.task('copy', () => {
+  gulp.task('copy', done => {
     let stream;
 
     for (let dest in paths) {
@@ -28,6 +28,7 @@ module.exports = (gulp, config, paths) => {
       }
     }
 
+    done();
     return stream;
   });
 };
