@@ -8,7 +8,7 @@ const sourcemaps = require('gulp-sourcemaps');
 
 const gnotify = require('gulp-notify');
 
-const browserify = require('gulp-browserify');
+const browserify = require('gulp-bro');
 
 const merge = require('merge-stream');
 
