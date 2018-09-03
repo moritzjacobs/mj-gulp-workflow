@@ -65,6 +65,9 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 
 # changelog
 
+## 1.6.0
+- update and clean up dependencies, including some major versions
+
 ## 1.5.0
 - updated dependencies including major versions
 
