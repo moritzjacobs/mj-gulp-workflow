@@ -1,6 +1,6 @@
 {
 	"name": "mj-gulp-workflow",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"repository": "https://github.com/moritzjacobs/mj-gulp-workflow",
 	"description": "A fork of https://github.com/zephir/zephir-gulp-workflow with added sourcemaps and other things.",
 	"main": "dist/index.js",
