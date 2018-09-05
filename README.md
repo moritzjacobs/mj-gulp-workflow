@@ -37,8 +37,8 @@ tasks in `combinedTasks` are run in sequence, so if you want parallel execution 
 
 ```js
 combinedTasks: {
-	default: [["dist", "watch"]], // runs parallel
 	dist: ["es6", "js", "images", "svg", "css", "copy", "clean"], // runs sequential
+	default: [["dist", "watch"]], // runs parallel
 },
 ```
 
