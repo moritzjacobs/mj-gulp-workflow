@@ -68,6 +68,9 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 
 # changelog
 
+## 2.0.2
+- Port the watch task to gulp 4 \**Whoopsie Daisies*\*
+
 ## 2.0.0–2.0.1
 - Updated to gulp 4
 - Remove unnecessary dependencies

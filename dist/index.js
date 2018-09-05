@@ -4,8 +4,6 @@ const fs = require('fs');
 
 const junk = require('junk');
 
-const watch = require('gulp-watch');
-
 const log = require('fancy-log');
 
 const argv = require('./lib/argv');
@@ -45,9 +43,9 @@ const workflow = gulp => {
       if (typeof sources !== 'string') {
         for (const dest in sources) {
           const source = sources[dest];
-          watch(source).on('change', event => {
+          const watcher = gulp.watch(source, gulp.series(tasks));
+          watcher.on('change', event => {
             log(`${source} changed`);
-            gulp.series(tasks);
           });
         }
       }
