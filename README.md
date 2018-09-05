@@ -37,8 +37,8 @@ tasks in `combinedTasks` are run in sequence, so if you want parallel execution 
 
 ```js
 combinedTasks: {
-	default: [["dist", "watch"]], // runs parallel
 	dist: ["es6", "js", "images", "svg", "css", "copy", "clean"], // runs sequential
+	default: [["dist", "watch"]], // runs parallel
 },
 ```
 
@@ -59,11 +59,19 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 ---
 
 # @todo:
-- port to gulp 4?
+- fix sourcemaps using babel and browserify
+- make tests more comprehensive
+- reintroduce a way to mark `gulp-config.js` files as outdated and show instructional messages after an update
+- patch vulnerabilities brought by `gulp-imagemin`, `rfg-api` and `cli-real-favicon` by updating or replacing these dependencies
 
 ---
 
 # changelog
+
+## 2.0.0–2.0.1
+- Updated to gulp 4
+- Remove unnecessary dependencies
+- Patch many vulnerabilities
 
 ## 1.6.0
 - update and clean up dependencies, including some major versions

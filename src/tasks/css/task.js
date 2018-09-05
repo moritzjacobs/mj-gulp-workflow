@@ -1,7 +1,7 @@
 const sass = require('gulp-sass')
 const sourcemaps = require('gulp-sourcemaps')
 const gnotify = require('gulp-notify')
-const gutil = require('gulp-util')
+const log = require('fancy-log')
 const merge = require('merge-stream')
 const argv = require('../../lib/argv')
 const isEnabled = require('../../lib/isEnabled.js')(argv.env)
@@ -49,7 +49,7 @@ module.exports = (gulp, config, paths) => {
 				buffer = buffer.pipe(sourcemaps.write('.'))
 			}
 
-			buffer = buffer.pipe(gulp.dest(dest)).on('error', gutil.log)
+			buffer = buffer.pipe(gulp.dest(dest)).on('error', log)
 
 			if (stream === undefined) {
 				stream = buffer
