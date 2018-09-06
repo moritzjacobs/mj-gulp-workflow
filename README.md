@@ -67,6 +67,10 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 
 # changelog
 
+## 2.0.3
+- fix an issue with non-existing source files and `gulp.src()`
+- improved testing
+
 ## 2.0.2
 - Port the watch task to gulp 4 \**Whoopsie Daisies*\*
 
