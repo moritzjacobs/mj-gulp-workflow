@@ -1,7 +1,8 @@
 const testConfig = require('../gulp-config-default')
 
 testConfig.clean = {
-	paths: ['./output/favicons/deleteme.txt']
+	enabled: true,
+	paths: ['./output/favicons/deleteme.txt', './output/**/*.map']
 }
 
 testConfig.paths = {
@@ -36,6 +37,6 @@ testConfig.paths = {
 	}
 }
 
-testConfig.combinedTasks.test = ['favicons', 'es6', 'js', 'images', 'svg', 'css', 'copy']
+testConfig.combinedTasks.test = ['es6', 'js', 'images', 'svg', 'css', 'copy', 'favicons', 'clean']
 
 module.exports = testConfig

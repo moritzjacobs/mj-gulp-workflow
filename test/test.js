@@ -99,7 +99,9 @@ for (const dest in js) {
 const css = testPair('css')
 for (const dest in css) {
 	const file = css[dest]
-	if (file.result === undefined) { break }
+	if (file.result === undefined) {
+		break
+	}
 	test(`css file exists: ${file.result}`, () => {
 		expect(fs.existsSync(file.result)).toBe(true)
 	})
@@ -112,10 +114,32 @@ for (const dest in css) {
 }
 
 /**
+ * result of the watch task test script is as expected
+ */
+const watchtaskCss = {
+	result: path.join(process.cwd(), 'test/output/css/watchtest.css'),
+	compareTo: path.join(process.cwd(), 'test/compare/css/watchtest.css')
+}
+test(`watchtask.css file content is as expected: ${watchtaskCss.result}`, () => {
+	const r = fs.readFileSync(watchtaskCss.result, 'utf8')
+	const c = fs.readFileSync(watchtaskCss.compareTo, 'utf8')
+	expect(r).toBe(c)
+})
+
+/**
  * if source files are not found, don't create empty dist files
  */
 const shouldNotExist = path.join(process.cwd(), 'test/output/should-not-exist')
 
 test(`${shouldNotExist}, well... should not exist!`, () => {
 	expect(fs.existsSync(shouldNotExist)).toBe(false)
+})
+
+/**
+ * the clean task should get rid of all *.map files
+ */
+test('No *.map files in output folder', () => {
+	expect(
+		glob.sync(path.join(process.cwd(), 'test/output/**/*.map')).length
+	).toBe(0)
 })

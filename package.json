@@ -9,13 +9,14 @@
 		"cli": "npm run start",
 		"dev": "cd ./test; gulp",
 		"dist": "cd ./test; gulp dist --env dist",
-		"pretest": "npm run babel-dist; npm run clean; cd ./test; gulp test --env dist",
+		"pretest": "npm run babel-dist; npm run clean; npm run watchtest; cd ./test; gulp test --env dist",
 		"test": "jest",
 		"jest": "jest",
 		"clean": "rm -rf ./test/output",
 		"testd": "http-server ./test -o",
 		"babel-dist": "babel src -d dist",
-		"start": "babel-node src --presets=env"
+		"start": "babel-node src --presets=env",
+		"watchtest": "./test/watchtest.sh"
 	},
 	"jest": {
 		"verbose": true,
