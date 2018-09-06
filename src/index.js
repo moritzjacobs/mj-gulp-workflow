@@ -45,7 +45,7 @@ const workflow = gulp => {
 				for (const dest in sources) {
 					const source = sources[dest]
 
-					const watcher = gulp.watch(source, gulp.series(tasks));
+					const watcher = gulp.watch(source, gulp.series(tasks))
 					watcher.on('change', event => {
 						log(`${source} changed`)
 					})
