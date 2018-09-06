@@ -10,7 +10,7 @@ module.exports = (gulp, config, paths) => {
 		for (const dest in paths) {
 			const source = paths[dest]
 
-			let buffer = gulp.src(source)
+			let buffer = gulp.src(source, { allowEmpty: true })
 
 			if (isEnabled(config.enabled)) {
 				buffer = buffer.pipe(fg(config, replaceEnv(dest)))

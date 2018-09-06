@@ -99,7 +99,7 @@ for (const dest in js) {
 const css = testPair('css')
 for (const dest in css) {
 	const file = css[dest]
-
+	if (file.result === undefined) { break }
 	test(`css file exists: ${file.result}`, () => {
 		expect(fs.existsSync(file.result)).toBe(true)
 	})
@@ -110,3 +110,12 @@ for (const dest in css) {
 		expect(r).toBe(c)
 	})
 }
+
+/**
+ * if source files are not found, don't create empty dist files
+ */
+const shouldNotExist = path.join(process.cwd(), 'test/output/should-not-exist')
+
+test(`${shouldNotExist}, well... should not exist!`, () => {
+	expect(fs.existsSync(shouldNotExist)).toBe(false)
+})

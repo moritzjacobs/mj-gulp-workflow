@@ -7,10 +7,12 @@ testConfig.clean = {
 testConfig.paths = {
 	// "DESTINATION" : ['SOURCE']
 	css: {
-		'./output/css/': ['./input/css/**/*.scss']
+		'./output/css/': ['./input/css/**/*.scss'],
+		'./output/should-not-exist/': ['./input/css/notfound.scss']
 	},
 	es6: {
-		'./input/tmp/': ['./input/es6/*.js']
+		'./input/tmp/': ['./input/es6/index.js'],
+		'./output/should-not-exist/': ['./input/es6/notfound.js']
 	},
 	es6Watch: {
 		watch: ['./input/es6/**/*.js']

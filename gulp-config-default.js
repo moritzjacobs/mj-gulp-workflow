@@ -111,7 +111,7 @@ module.exports = {
 			'../src/tmp/es6-bundle.js': ['../src/es6/index.js']
 		},
 		es6Watch: {
-			'../src/tmp/es6-bundle.js': ['../src/es6/**/*.js']
+			0: ['../src/es6/**/*.js']
 		},
 		js: {
 			'../public/js/script.js': [

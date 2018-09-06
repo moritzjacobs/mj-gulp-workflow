@@ -32,7 +32,9 @@ module.exports = (name, gulp, config, paths) => {
         dest = dest.replace(file, '');
       }
 
-      let buffer = gulp.src(source);
+      let buffer = gulp.src(source, {
+        allowEmpty: true
+      });
 
       if (isEnabled(config.sourcemaps.enabled)) {
         buffer = buffer.pipe(sourcemaps.init());

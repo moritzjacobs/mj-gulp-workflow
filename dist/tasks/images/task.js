@@ -21,7 +21,9 @@ module.exports = (gulp, config, paths) => {
     for (let dest in paths) {
       const source = paths[dest];
       dest = replaceEnv(dest);
-      let buffer = gulp.src(source);
+      let buffer = gulp.src(source, {
+        allowEmpty: true
+      });
 
       if (isEnabled(config.imagemin.enabled)) {
         buffer = buffer.pipe(imagemin(config.imagemin.config));
