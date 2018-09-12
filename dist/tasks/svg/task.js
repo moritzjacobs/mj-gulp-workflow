@@ -2,6 +2,8 @@
 
 const merge = require('merge-stream');
 
+const touch = require('gulp-touch-cmd');
+
 const argv = require('../../lib/argv');
 
 const svgmin = require('gulp-svgmin');
@@ -25,7 +27,7 @@ module.exports = (gulp, config, paths) => {
         buffer = buffer.pipe(svgmin(config.svgmin.config));
       }
 
-      buffer = buffer.pipe(gulp.dest(dest));
+      buffer = buffer.pipe(gulp.dest(dest)).pipe(touch());
 
       if (stream === undefined) {
         stream = buffer;

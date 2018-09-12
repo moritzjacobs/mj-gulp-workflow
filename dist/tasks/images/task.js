@@ -6,6 +6,8 @@ const pngquant = require('imagemin-pngquant');
 
 const merge = require('merge-stream');
 
+const touch = require('gulp-touch-cmd');
+
 const gnotify = require('gulp-notify');
 
 const argv = require('../../lib/argv');
@@ -30,7 +32,7 @@ module.exports = (gulp, config, paths) => {
         buffer = buffer.pipe(imagemin(pngquant()));
       }
 
-      buffer = buffer.pipe(gulp.dest(dest)).on('error', gnotify.onError({
+      buffer = buffer.pipe(gulp.dest(dest)).pipe(touch()).on('error', gnotify.onError({
         message: 'Error: <%= error.message %>',
         emitError: true
       }));

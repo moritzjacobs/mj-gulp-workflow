@@ -10,6 +10,8 @@ const log = require('fancy-log');
 
 const merge = require('merge-stream');
 
+const touch = require('gulp-touch-cmd');
+
 const argv = require('../../lib/argv');
 
 const isEnabled = require('../../lib/isEnabled.js')(argv.env);
@@ -48,7 +50,7 @@ module.exports = (gulp, config, paths) => {
         buffer = buffer.pipe(sourcemaps.write('.'));
       }
 
-      buffer = buffer.pipe(gulp.dest(dest)).on('error', log);
+      buffer = buffer.pipe(gulp.dest(dest)).pipe(touch()).on('error', log);
 
       if (stream === undefined) {
         stream = buffer;
