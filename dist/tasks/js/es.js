@@ -10,6 +10,8 @@ const gnotify = require('gulp-notify');
 
 const browserify = require('gulp-bro');
 
+const touch = require('gulp-touch-cmd');
+
 const merge = require('merge-stream');
 
 const argv = require('../../lib/argv');
@@ -62,7 +64,7 @@ module.exports = (name, gulp, config, paths) => {
         buffer = buffer.pipe(sourcemaps.write('.'));
       }
 
-      buffer = buffer.pipe(gulp.dest(dest)).on('error', gnotify.onError({
+      buffer = buffer.pipe(gulp.dest(dest)).pipe(touch()).on('error', gnotify.onError({
         message: 'Error: <%= error.message %>',
         emitError: true
       }));
