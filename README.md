@@ -67,6 +67,9 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 
 # changelog
 
+## 2.0.4–2.0.5
+- add `gulp-touch` to modify dist files' mtime. See [this issue](https://github.com/gulpjs/gulp/issues/2193) over at gulpjs/gulp.
+
 ## 2.0.3
 - fix an issue with non-existing source files and `gulp.src()`
 - improved testing
