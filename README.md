@@ -67,6 +67,10 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 
 # changelog
 
+## 2.0.6
+- Dependency updates, dependency updates and more dependency updates!
+- As of now, everything is up to date and `npm audit` _"found 0 vulnerabilities"_ 🎉
+
 ## 2.0.4–2.0.5
 - add `gulp-touch` to modify dist files' mtime. See [this issue](https://github.com/gulpjs/gulp/issues/2193) over at gulpjs/gulp.
 
