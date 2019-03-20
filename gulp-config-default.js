@@ -73,7 +73,7 @@ module.exports = {
 
 	clean: {
 		enabled: 'dist',
-		paths: ['../public/**/*.map', '../src/tmp']
+		paths: ['./public/**/*.map', './src/tmp']
 	},
 
 	images: {
@@ -105,36 +105,36 @@ module.exports = {
 	paths: {
 		// "DESTINATION" : ['SOURCE']
 		css: {
-			'../public/css/': ['../src/scss/**/*.scss']
+			'./public/css/': ['./src/scss/**/*.scss']
 		},
 		es6: {
-			'../src/tmp/es6-bundle.js': ['../src/es6/index.js']
+			'./src/tmp/es6-bundle.js': ['./src/es6/index.js']
 		},
 		es6Watch: {
-			0: ['../src/es6/**/*.js']
+			0: ['./src/es6/**/*.js']
 		},
 		js: {
-			'../public/js/script.js': [
-				'../src/tmp/es6-bundle.js',
-				'../src/js/*.js'
+			'./public/js/script.js': [
+				'./src/tmp/es6-bundle.js',
+				'./src/js/*.js'
 			]
 		},
 		images: {
-			'../public/img/': [
-				'../src/img/**/*.jpeg',
-				'../src/img/**/*.jpg',
-				'../src/img/**/*.png',
-				'../src/img/**/*.gif'
+			'./public/img/': [
+				'./src/img/**/*.jpeg',
+				'./src/img/**/*.jpg',
+				'./src/img/**/*.png',
+				'./src/img/**/*.gif'
 			]
 		},
 		svg: {
-			'../public/img/': ['../src/img/**/*.svg']
+			'./public/img/': ['..src/img/**/*.svg']
 		},
 		copy: {
-			'../public/fonts/': ['../src/fonts/**/*.*']
+			'./public/fonts/': ['./src/fonts/**/*.*']
 		},
 		favicons: {
-			'../public/favicons/': ['../src/favicons/**/*.png']
+			'./public/favicons/': ['./src/favicons/**/*.png']
 		}
 	},
 
