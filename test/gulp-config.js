@@ -38,5 +38,7 @@ testConfig.paths = {
 }
 
 testConfig.combinedTasks.test = ['es6', 'js', 'images', 'svg', 'css', 'copy', 'favicons', 'clean']
+testConfig.combinedTasks.testTxt = ['es6', 'js', 'css', 'copy', 'clean']
+testConfig.combinedTasks.testImg = ['images', 'svg', 'favicons']
 
 module.exports = testConfig

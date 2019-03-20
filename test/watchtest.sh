@@ -5,13 +5,13 @@ cd ./test
 gulp watch &
 PID=$!
 
-echo "wait 5s..."
-sleep 5
+echo "wait 3s..."
+sleep 3
 
 # write a file to a watched directory
 echo "body{color:red}" > ./input/css/watchtest.scss
-echo "wait 5s again ..."
-sleep 5
+echo "wait 3s again ..."
+sleep 3
 
 # kill the watch task and remove the source file#
 rm -f ./input/css/watchtest.scss
