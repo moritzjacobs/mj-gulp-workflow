@@ -16,7 +16,7 @@ module.exports = {
 		autoprefixer: {
 			enabled: true,
 			config: {
-				browsers: browserlist
+				browserlist: browserlist
 			}
 		},
 
