@@ -119,6 +119,9 @@ module.exports = {
 				'./src/js/*.js'
 			]
 		},
+		jsConcat: {
+			'./public/js/vendor.js': ['./src/js/vendor/*.js']
+		},
 		images: {
 			'./public/img/': [
 				'./src/img/**/*.jpeg',
