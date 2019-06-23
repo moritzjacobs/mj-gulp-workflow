@@ -67,6 +67,9 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 
 # changelog
 
+## 2.1.0–2.1.1
+- Added `jsConcat`task for easier vendor file concatenation
+
 ## 2.0.7–2.0.8
 - Dependency updates, vulnerabilities and a small improvement to gif optimization
 
