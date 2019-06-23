@@ -80,7 +80,7 @@ module.exports = {
 		imagemin: {
 			enabled: true,
 			config: [
-				imagemin.gifsicle({ interlaced: true }),
+				imagemin.gifsicle(),
 				imagemin.jpegtran({ progressive: true }),
 				imagemin.optipng({ optimizationLevel: 5 }),
 				imagemin.svgo({ plugins: [{ removeViewBox: true }] })
