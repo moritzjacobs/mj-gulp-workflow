@@ -36,6 +36,24 @@ for (const dest in js) {
 		expect(r).toBe(c)
 	})
 }
+/**
+ * test run for jsConcat: files exist, and content is as expected
+ */
+const jsConcat = testPair('jsConcat')
+
+for (const dest in jsConcat) {
+	const file = jsConcat[dest]
+
+	test(`vendor file exists: ${file.result}`, () => {
+		expect(fs.existsSync(file.result)).toBe(true)
+	})
+
+	test(`vendor file content is as expected: ${file.result}`, () => {
+		const r = fs.readFileSync(file.result, 'utf8')
+		const c = fs.readFileSync(file.compareTo, 'utf8')
+		expect(r).toBe(c)
+	})
+}
 
 /**
  * test run for css: files exist, and content is as expected
