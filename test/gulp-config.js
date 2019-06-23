@@ -21,6 +21,9 @@ testConfig.paths = {
 	js: {
 		'./output/js/script.js': ['./input/tmp/*.js', './input/js/*.js']
 	},
+	jsConcat: {
+		'./output/jsConcat/vendor.js': ['./input/jsConcat/**/*.js']
+	},
 	images: {
 		'./output/images/': [
 			'./input/images/**/*.jpeg',
@@ -37,8 +40,8 @@ testConfig.paths = {
 	}
 }
 
-testConfig.combinedTasks.test = ['es6', 'js', 'images', 'svg', 'css', 'copy', 'favicons', 'clean']
-testConfig.combinedTasks.testTxt = ['es6', 'js', 'css', 'copy', 'clean']
+testConfig.combinedTasks.test = ['es6', 'js', 'jsConcat', 'images', 'svg', 'css', 'copy', 'favicons', 'clean']
+testConfig.combinedTasks.testTxt = ['es6', 'js', 'jsConcat', 'css', 'copy', 'clean']
 testConfig.combinedTasks.testImg = ['images', 'svg', 'favicons']
 
 module.exports = testConfig
