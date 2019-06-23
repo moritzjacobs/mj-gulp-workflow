@@ -67,6 +67,9 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 
 # changelog
 
+## 2.0.7–2.0.8
+- Dependency updates, vulnerabilities and a small improvement to gif optimization
+
 ## 2.0.6
 - Dependency updates, dependency updates and more dependency updates!
 - As of now, everything is up to date and `npm audit` _"found 0 vulnerabilities"_ 🎉
