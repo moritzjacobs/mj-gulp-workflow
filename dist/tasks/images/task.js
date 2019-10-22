@@ -28,8 +28,21 @@ module.exports = (gulp, config, paths) => {
       });
 
       if (isEnabled(config.imagemin.enabled)) {
-        buffer = buffer.pipe(imagemin(config.imagemin.config));
-        buffer = buffer.pipe(imagemin(pngquant()));
+        buffer = buffer.pipe(imagemin(config.imagemin.config)); // pngquant with default options
+
+        let pngquantOptions = {
+          quality: [0.6, 0.8]
+        };
+
+        if (config.imagemin.pngquant !== undefined) {
+          pngquantOptions = config.imagemin.pngquant;
+        }
+
+        buffer = buffer.pipe(imagemin([pngquant(pngquantOptions)], {
+          plugins: [pngquant]
+        }, {
+          verbose: true
+        }));
       }
 
       buffer = buffer.pipe(gulp.dest(dest)).pipe(touch()).on('error', gnotify.onError({
