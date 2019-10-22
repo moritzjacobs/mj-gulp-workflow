@@ -67,7 +67,7 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 
 # changelog
 
-## 2.1.2
+## 2.1.2–2.1.3
 - Updated dependencies + fix pngquant – thank you @hoffmannclaus!
 
 ## 2.1.0–2.1.1
