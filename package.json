@@ -24,7 +24,7 @@
 		"dist": "cd ./test; gulp dist --env dist",
 		"esw": "esw --fix -w",
 		"lint-scripts": "scriptlint",
-		"pretest": "npm run babel-dist; npm run clean; npm run watchtest; cd ./test; gulp test --env dist",
+		"pretest": "npm run build; npm run clean; npm run watchtest; cd ./test; gulp test --env dist",
 		"pretest-img": "cd ./test; gulp testImg --env dist",
 		"pretest-txt": "npm run babel-dist; npm run clean; npm run watchtest; cd ./test; gulp testTxt --env dist",
 		"start": "babel-node src --presets=env",
