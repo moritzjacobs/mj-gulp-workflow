@@ -4,22 +4,29 @@
 	"repository": "https://github.com/moritzjacobs/mj-gulp-workflow",
 	"description": "A fork of https://github.com/zephir/zephir-gulp-workflow with added sourcemaps and other things.",
 	"main": "dist/index.js",
+	"scriptlint": {
+		"rules": {
+			"correct-casing": false,
+			"uses-allowed-namespace": false,
+			"no-rm-rf": false
+		}
+	},
 	"scripts": {
-		"esw": "esw --fix -w",
+		"babel-dist": "babel src -d dist",
+		"clean": "rm -rf ./test/output",
 		"cli": "npm run start",
 		"dev": "cd ./test; gulp",
 		"dist": "cd ./test; gulp dist --env dist",
+		"esw": "esw --fix -w",
+		"lint-scripts": "scriptlint",
 		"pretest": "npm run babel-dist; npm run clean; npm run watchtest; cd ./test; gulp test --env dist",
-		"test": "jest",
-		"pretest-txt": "npm run babel-dist; npm run clean; npm run watchtest; cd ./test; gulp testTxt --env dist",
-		"test-txt": "npm run jest --runTestsByPath txt.test.js",
 		"pretest-img": "cd ./test; gulp testImg --env dist",
-		"test-img": "npm run jest --runTestsByPath img.test.js",
-		"jest": "jest",
-		"clean": "rm -rf ./test/output",
-		"testd": "http-server ./test -o",
-		"babel-dist": "babel src -d dist",
+		"pretest-txt": "npm run babel-dist; npm run clean; npm run watchtest; cd ./test; gulp testTxt --env dist",
 		"start": "babel-node src --presets=env",
+		"test": "jest && npm run lint-scripts",
+		"test-img": "jest --runTestsByPath img.test.js",
+		"test-txt": "jest --runTestsByPath txt.test.js",
+		"testd": "http-server ./test -o",
 		"watchtest": "./test/watchtest.sh"
 	},
 	"jest": {
@@ -73,6 +80,7 @@
 		"eslint-plugin-promise": "^4.2.1",
 		"eslint-plugin-standard": "^4.0.1",
 		"eslint-watch": "^6.0.1",
-		"jest": "^25.1.0"
+		"jest": "^25.1.0",
+		"scriptlint": "^2.0.5"
 	}
 }
