@@ -29,9 +29,10 @@ const workflow = gulp => {
   const tasks = fs.readdirSync(`${properties.moduleRootDir}/tasks/`).filter(junk.not); // autorequire
 
   tasks.forEach(task => {
-    let taskFn = require(`./tasks/${task}/task.js`);
+    const taskFn = require(`./tasks/${task}/task.js`);
 
-    taskFn(gulp, config[task], config.paths[task]);
+    const taskConfig = config[task] !== undefined ? config[task] : {};
+    taskFn(gulp, taskConfig, config.paths[task]);
   }); // special watch task
 
   gulp.task('watch', () => {

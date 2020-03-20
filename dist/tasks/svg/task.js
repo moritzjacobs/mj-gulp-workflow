@@ -21,10 +21,23 @@ module.exports = (gulp, config, paths) => {
       dest = replaceEnv(dest);
       let buffer = gulp.src(source, {
         allowEmpty: true
-      });
+      }); // -------- svgMin ---------
 
-      if (isEnabled(config.svgmin.enabled)) {
-        buffer = buffer.pipe(svgmin(config.svgmin.config));
+      let svgMinEnabled = true;
+      let svgMinConfig = {};
+
+      if (config.svgmin !== undefined) {
+        if (config.svgmin.enabled !== undefined) {
+          svgMinEnabled = config.svgmin.enabled;
+        }
+
+        if (config.svgmin.config !== undefined) {
+          svgMinConfig = config.svgmin.config;
+        }
+      }
+
+      if (isEnabled(svgMinEnabled)) {
+        buffer = buffer.pipe(svgmin(svgMinConfig));
       }
 
       buffer = buffer.pipe(gulp.dest(dest)).pipe(touch());
