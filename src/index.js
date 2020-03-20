@@ -30,8 +30,9 @@ const workflow = gulp => {
 
 	// autorequire
 	tasks.forEach(task => {
-		let taskFn = require(`./tasks/${task}/task.js`)
-		taskFn(gulp, config[task], config.paths[task])
+		const taskFn = require(`./tasks/${task}/task.js`)
+		const taskConfig = (config[task] !== undefined) ? config[task] : {}
+		taskFn(gulp, taskConfig, config.paths[task])
 	})
 
 	// special watch task

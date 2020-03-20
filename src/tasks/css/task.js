@@ -19,12 +19,25 @@ module.exports = (gulp, config, paths) => {
 
 			let buffer = gulp.src(source, { allowEmpty: true })
 
-			if (isEnabled(config.sourcemaps.enabled)) {
+			// -------- sourcemaps init ---------
+			let sourceMapsEnabled = 'dev'
+			if (config.sourcemaps !== undefined && config.sourcemaps.enabled !== undefined) {
+				sourceMapsEnabled = config.sourcemaps.enabled
+			}
+			if (isEnabled(sourceMapsEnabled)) {
 				buffer = buffer.pipe(sourcemaps.init())
 			}
 
+			// -------- scss ---------
+			let scssConfig = {
+				outputStyle: 'compressed'
+			}
+			if (config.scss !== undefined && config.scss.config !== undefined) {
+				scssConfig = { ...scssConfig, ...config.scss.config }
+			}
+
 			buffer = buffer.pipe(
-				sass(config.scss.config).on(
+				sass(scssConfig).on(
 					'error',
 					gnotify.onError({
 						message: 'Error: <%= error.message %>',
@@ -33,21 +46,56 @@ module.exports = (gulp, config, paths) => {
 				)
 			)
 
-			if (isEnabled(config.autoprefixer.enabled)) {
+			// -------- autoprefixer ---------
+			let autoprefixerEnabled = true
+			let autoprefixerConfig = {
+				browserlist: ['> 0.1%']
+			}
+
+			if (config.autoprefixer !== undefined) {
+				if (config.autoprefixer.enabled !== undefined) {
+					autoprefixerEnabled = true
+				}
+				if (config.autoprefixer.config !== undefined) {
+					autoprefixerConfig = { ...autoprefixerConfig, ...config.autoprefixer.config }
+				}
+			}
+			if (autoprefixerEnabled) {
 				buffer = require('./autoprefixer.js')(
 					buffer,
-					config.autoprefixer.config
+					autoprefixerConfig
 				)
 			}
 
-			if (isEnabled(config.cleanCss.enabled)) {
+			// -------- cleanCSS ---------
+			let cleanCSSEnabled = true
+			let cleanCSSConfig = {
+				compatibility: 'ie8'
+			}
+
+			if (config.cleanCss !== undefined) {
+				if (config.cleanCss.enabled !== undefined) {
+					cleanCSSEnabled = config.cleanCss.enabled
+				}
+				if (config.cleanCss.config !== undefined) {
+					cleanCSSConfig = { ...cleanCSSConfig, ...config.cleanCss.config }
+				}
+			}
+			// disable cleanCSS if we don't want compressed files
+			if (scssConfig.outputStyle !== 'compressed') {
+				cleanCSSEnabled = false
+				console.log(scssConfig)
+				console.log('clean css is not run')
+			}
+			if (cleanCSSEnabled) {
 				buffer = require('./cleanCss.js')(
 					buffer,
-					config.cleanCss.config
+					cleanCSSConfig
 				)
 			}
 
-			if (isEnabled(config.sourcemaps.enabled)) {
+			// -------- sourcemaps write out ---------
+			if (isEnabled(sourceMapsEnabled)) {
 				buffer = buffer.pipe(sourcemaps.write('.'))
 			}
 

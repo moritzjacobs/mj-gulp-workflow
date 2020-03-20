@@ -26,11 +26,21 @@ module.exports = (name, gulp, config, paths) => {
 
 			let buffer = gulp.src(source, { allowEmpty: true })
 
-			if (isEnabled(config.sourcemaps.enabled)) {
+			// -------- sourcemaps init ---------
+			let sourceMapsEnabled = 'dev'
+			if (config.sourcemaps !== undefined && config.sourcemaps.enabled !== undefined) {
+				sourceMapsEnabled = config.sourcemaps.enabled
+			}
+			if (isEnabled(sourceMapsEnabled)) {
 				buffer = buffer.pipe(sourcemaps.init())
 			}
 
-			if (isEnabled(config.browserify.enabled)) {
+			// -------- browserify ---------
+			let browserifyEnabled = true
+			if (config.browserify !== undefined && config.browserify.enabled !== undefined) {
+				browserifyEnabled = config.browserify.enabled
+			}
+			if (isEnabled(browserifyEnabled)) {
 				buffer = buffer.pipe(
 					browserify().on(
 						'error',
@@ -46,9 +56,36 @@ module.exports = (name, gulp, config, paths) => {
 				buffer = buffer.pipe(concat(file))
 			}
 
-			if (isEnabled(config.babeljs.enabled)) {
+			// -------- babel ---------
+
+			let babeljsEnabled = true
+			let babeljsConfig = {
+				minified: true,
+				comments: false,
+				presets: [
+					[
+						'@babel/preset-env',
+						{
+							targets: {
+								browsers: ['> 0.1%']
+							}
+						}
+					]
+				]
+			}
+
+			if (config.babeljs !== undefined) {
+				if (config.babeljs.enabled !== undefined) {
+					babeljsEnabled = config.babeljs.enabled
+				}
+				if (config.babeljs.config !== undefined) {
+					babeljsConfig = { ...babeljsConfig, ...config.babeljs.config }
+				}
+			}
+
+			if (isEnabled(babeljsEnabled)) {
 				buffer = buffer.pipe(
-					babel(config.babeljs.config).on(
+					babel(babeljsConfig).on(
 						'error',
 						gnotify.onError({
 							message: 'Error: <%= error.message %>',
@@ -58,7 +95,9 @@ module.exports = (name, gulp, config, paths) => {
 				)
 			}
 
-			if (isEnabled(config.sourcemaps.enabled)) {
+			// -------- sourcemaps write out ---------
+
+			if (isEnabled(sourceMapsEnabled)) {
 				buffer = buffer.pipe(sourcemaps.write('.'))
 			}
 
