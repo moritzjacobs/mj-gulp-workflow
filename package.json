@@ -4,6 +4,11 @@
 	"repository": "https://github.com/moritzjacobs/mj-gulp-workflow",
 	"description": "A fork of https://github.com/zephir/zephir-gulp-workflow with added sourcemaps and other things.",
 	"main": "dist/index.js",
+	"files": [
+		"/dist",
+		"/README.md",
+		"/LICENSE"
+	],
 	"scriptlint": {
 		"rules": {
 			"correct-casing": false,
@@ -12,7 +17,7 @@
 		}
 	},
 	"scripts": {
-		"babel-dist": "babel src -d dist",
+		"build": "babel src -d dist",
 		"clean": "rm -rf ./test/output",
 		"cli": "npm run start",
 		"dev": "cd ./test; gulp",
@@ -37,7 +42,7 @@
 		"Marc Stampfli <marc.stampfli@zephir.ch> (http://zephir.ch)",
 		"Moritz Jacobs <mail@moritzjacobs.de> (https://moritzjacobs.de)"
 	],
-	"license": "ISC",
+	"license": "Unlicense",
 	"dependencies": {
 		"@babel/core": "^7.8.7",
 		"@babel/preset-env": "^7.8.7",
