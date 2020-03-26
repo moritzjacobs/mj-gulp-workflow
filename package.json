@@ -28,6 +28,7 @@
 		"pretest-txt": "npm run babel-dist; npm run clean; npm run watchtest; cd ./test; gulp testTxt --env dist",
 		"start": "babel-node src --presets=env",
 		"test": "jest && npm run lint-scripts",
+		"test-with-rfg": "TEST_RFG_API=true npm run test",
 		"test-img": "jest --runTestsByPath img.test.js",
 		"test-txt": "jest --runTestsByPath txt.test.js",
 		"testd": "http-server ./test -o",
@@ -39,7 +40,8 @@
 	},
 	"contributors": [
 		"Marc Stampfli <marc.stampfli@zephir.ch> (http://zephir.ch)",
-		"Moritz Jacobs <mail@moritzjacobs.de> (https://moritzjacobs.de)"
+		"Moritz Jacobs <mail@moritzjacobs.de> (https://moritzjacobs.de)",
+		"Claus Hoffmann <claus@yeah.de> (https://yeah.de)"
 	],
 	"license": "Unlicense",
 	"dependencies": {

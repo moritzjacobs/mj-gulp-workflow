@@ -13,7 +13,7 @@ properties.env = argv.env;
 
 console.log(`Environment: ${properties.env}`);
 
-const workflow = gulp => {
+module.exports = gulp => {
 	if (!gulp) {
 		return false;
 	}
@@ -65,5 +65,3 @@ const workflow = gulp => {
 		gulp.task(taskName, gulp.series(config.combinedTasks[taskName]));
 	}
 };
-
-module.exports = workflow;
