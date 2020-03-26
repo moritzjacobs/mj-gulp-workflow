@@ -1,0 +1,14 @@
+{
+	"extends": ["peerigon", "peerigon/styles/prefer-arrow", "prettier"],
+	"root": true,
+	"env": {
+		"node": true
+	},
+	"rules": {
+		"func-style": "off",
+		"no-tabs": "off",
+		"indent": ["error", "tab"],
+		"consistent-return": "off",
+		"import/no-dynamic-require": "off"
+	}
+}
