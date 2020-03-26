@@ -39,7 +39,8 @@
 	},
 	"contributors": [
 		"Marc Stampfli <marc.stampfli@zephir.ch> (http://zephir.ch)",
-		"Moritz Jacobs <mail@moritzjacobs.de> (https://moritzjacobs.de)"
+		"Moritz Jacobs <mail@moritzjacobs.de> (https://moritzjacobs.de)",
+		"Claus Hoffmann <claus@yeah.de> (https://yeah.de)"
 	],
 	"license": "Unlicense",
 	"dependencies": {
