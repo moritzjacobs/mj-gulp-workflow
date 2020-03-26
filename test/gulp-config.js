@@ -40,8 +40,29 @@ testConfig.paths = {
 	}
 };
 
-testConfig.combinedTasks.test = ["es6", "js", "jsConcat", "images", "svg", "css", "copy", "favicons", "clean"];
-testConfig.combinedTasks.testTxt = ["es6", "js", "jsConcat", "css", "copy", "clean"];
-testConfig.combinedTasks.testImg = ["images", "svg", "favicons"];
+testConfig.combinedTasks.test = [
+	"es6",
+	"js",
+	"jsConcat",
+	"images",
+	"svg",
+	"css",
+	"copy",
+	"clean"
+];
+testConfig.combinedTasks.testTxt = [
+	"es6",
+	"js",
+	"jsConcat",
+	"css",
+	"copy",
+	"clean"
+];
+testConfig.combinedTasks.testImg = ["images", "svg"];
+
+if (process.env.TEST_RFG_API) {
+	testConfig.combinedTasks.test.push("favicons");
+	testConfig.combinedTasks.testImg.push("favicons");
+}
 
 module.exports = testConfig;

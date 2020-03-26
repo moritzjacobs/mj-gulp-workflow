@@ -44,21 +44,24 @@ for (const dest in svgs) {
 /**
  * test run for favicons: files exist
  */
-const favicons = testPair("favicons");
 
-for (let dest in favicons) {
-	dest = path.join(process.cwd(), "test", dest);
-	const files = glob(dest, {sync: true});
+if (process.env.TEST_RFG_API) {
+	const favicons = testPair("favicons");
 
-	for (const file of files) {
-		const slug = path.basename(file, ".png");
-		let dir = path.dirname(file);
+	for (let dest in favicons) {
+		dest = path.join(process.cwd(), "test", dest);
+		const files = glob(dest, { sync: true });
 
-		dir = dir.replace("/input/", "/output/");
-		const testFile = path.join(dir, slug, "favicon.ico");
+		for (const file of files) {
+			const slug = path.basename(file, ".png");
+			let dir = path.dirname(file);
 
-		test(`favicon exists: ${testFile}`, () => {
-			expect(fs.existsSync(testFile)).toBe(true);
-		});
+			dir = dir.replace("/input/", "/output/");
+			const testFile = path.join(dir, slug, "favicon.ico");
+
+			test(`favicon exists: ${testFile}`, () => {
+				expect(fs.existsSync(testFile)).toBe(true);
+			});
+		}
 	}
 }
