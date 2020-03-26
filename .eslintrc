@@ -1,11 +1,4 @@
 {
-	"extends": "standard",
-	"plugins": ["jest"],
-	"env": {
-		"jest": true
-	},
-	"rules": {
-	    indent: ["error", "tab"],
-    	"no-tabs": 0
-	}
+	"extends": ["peerigon"],
+	"root": true
 }
