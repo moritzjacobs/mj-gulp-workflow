@@ -1,19 +1,20 @@
 module.exports = (gulp, config, paths) => {
-	let concatConfig = {
+	const concatConfig = {
 		sourcemaps: {
-			enabled: false
+			enabled: false,
 		},
 		browserify: {
-			enabled: false
+			enabled: false,
 		},
 
 		babeljs: {
 			enabled: false,
 			config: {
 				minified: true,
-				comments: false
-			}
-		}
-	}
-	require('../js/es')('jsConcat', gulp, concatConfig, paths)
-}
+				comments: false,
+			},
+		},
+	};
+
+	require("../js/es")("jsConcat", gulp, concatConfig, paths);
+};

@@ -1,1 +1,1 @@
-require('../dist/index.js')(require('gulp'))
+require("../dist/index.js")(require("gulp"));

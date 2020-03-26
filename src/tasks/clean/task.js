@@ -1,11 +1,13 @@
-const del = require('del')
+const del = require("del");
 
 module.exports = (gulp, config, paths) => {
-	gulp.task('clean', () => {
-		let dels = []
+	gulp.task("clean", () => {
+		const dels = [];
+
 		for (const i in config.paths) {
-			dels.push(config.paths[i])
+			dels.push(config.paths[i]);
 		}
-		return del(dels, { force: true })
-	})
-}
+
+		return del(dels, {force: true});
+	});
+};
