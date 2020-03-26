@@ -88,7 +88,7 @@ for (const dest in css) {
  */
 const watchtaskCss = {
 	result: path.join(process.cwd(), "test/output/css/watchtest.css"),
-	compareTo: path.join(process.cwd(), "test/compare/css/watchtest.css")
+	compareTo: path.join(process.cwd(), "test/compare/css/watchtest.css"),
 };
 
 test(`watchtask.css file content is as expected: ${watchtaskCss.result}`, () => {

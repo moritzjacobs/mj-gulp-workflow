@@ -9,6 +9,8 @@ A fork of [zephir/zephir-gulp-workflow](https://github.com/zephir/zephir-gulp-wo
 - `gulp cleanup` for file removal (sourcemaps)
 - gulp-notify
 - favicons
+- a lot of configuration has defaults
+- `js`and `es6` are the same task, but can have different configurations (e.g. babel or no-babel)
 
 ## conventions
 - config files are located at the root of your `package.json` and are called `gulp-config.js` (not `compileConfig.js` as with `zephir-gulp-workflow`)
@@ -41,7 +43,91 @@ combinedTasks: {
 	default: [["dist", "watch"]], // runs parallel
 },
 ```
+a lot of configurable stuff has defaults, that can be overwritten. These defaults are not in the gulp-config to keep it clean. They can still be readded and overwrite the defaults. The defaults are:  
 
+```js 
+css: {
+	scss: {
+		config: {
+			outputStyle: 'compressed' 				}
+	},
+
+	sourcemaps: {
+		enabled: 'dev'
+	},
+
+	autoprefixer: {
+		enabled: true,
+		config: {
+			browserlist: ['> 0.1%']
+		}
+	},
+
+	cleanCss: {
+		enabled: true,
+		config: {
+			compatibility: 'ie8'
+		}
+	}
+},
+js: {
+	sourcemaps: {
+		enabled: 'dev'
+	},
+	browserify: {
+		enabled: true
+	},
+
+	babeljs: {
+		enabled: true,
+		config: {
+			minified: true,
+			presets: [
+				[
+					'@babel/preset-env',
+					{
+						targets: {
+							browsers: ['> 0.1%']
+						}
+					}
+				]
+			]
+		}
+	}
+},
+images: {
+	imagemin: {
+		enabled: true,
+		config: [
+			imagemin.gifsicle(),
+			imagemin.jpegtran({ progressive: true }),
+			imagemin.optipng({ optimizationLevel: 5 }),
+			imagemin.svgo({ plugins: [{ removeViewBox: true }] })
+		],
+		additional: false
+	}
+},
+
+svg: {
+	svgmin: {
+		enabled: true,
+		config: {}
+	}
+}
+
+``` 
+
+The `favicons`-task has no defaults. Configuration looks like this: 
+
+```js
+favicons: {
+	enabled: true,
+	themeColor: '#cafe23',
+	iconsPath: './',
+	appName: 'FoobarBaz'
+},
+
+```
 ## Usage
 
 Run `gulp dist --env dist` for distribution, otherwise just `gulp`.
@@ -66,6 +152,13 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 ---
 
 # changelog
+
+## 2.2.1
+- created defaults for a lot of configuration to shrink down `gulp-config.js`
+
+## 2.1.4
+- Updated dependencies
+
 
 ## 2.1.2–2.1.3
 - Updated dependencies + fix pngquant – thank you @hoffmannclaus!
