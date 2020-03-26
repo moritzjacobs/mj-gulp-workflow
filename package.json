@@ -10,29 +10,25 @@
 		"/LICENSE"
 	],
 	"scriptlint": {
-		"rules": {
-			"correct-casing": false,
-			"uses-allowed-namespace": false,
-			"no-rm-rf": false
-		}
+		"strict": true
 	},
 	"scripts": {
 		"build": "babel src -d dist",
-		"clean": "rm -rf ./test/output",
-		"cli": "npm run start",
 		"dev": "cd ./test; gulp",
-		"dist": "cd ./test; gulp dist --env dist",
-		"lint-scripts": "scriptlint",
-		"pretest": "npm run build; npm run clean; npm run watchtest; cd ./test; gulp test --env dist",
-		"pretest-img": "cd ./test; gulp testImg --env dist",
-		"pretest-txt": "npm run babel-dist; npm run clean; npm run watchtest; cd ./test; gulp testTxt --env dist",
+		"format:scripts": "scriptlint",
+		"pretest": "run-s build test:dist:clean test:watchtest test:dist",
+		"pretest:img": "cd ./test; gulp testImg --env dist",
+		"pretest:txt": "run-s babel-dist test:dist:clean test:watchtest test:txt:dist",
 		"start": "babel-node src --presets=env",
-		"test": "jest && npm run lint-scripts",
-		"test-with-rfg": "TEST_RFG_API=true npm run test",
-		"test-img": "jest --runTestsByPath img.test.js",
-		"test-txt": "jest --runTestsByPath txt.test.js",
-		"testd": "http-server ./test -o",
-		"watchtest": "./test/watchtest.sh"
+		"test": "run-s test:unit format:scripts",
+		"test:dist": "cd ./test; gulp test --env dist",
+		"test:dist:clean": "rimraf ./test/output",
+		"test:img": "jest --runTestsByPath img.test.js",
+		"test:txt": "jest --runTestsByPath txt.test.js",
+		"test:txt:dist": "cd ./test; gulp testTxt --env dist",
+		"test:unit": "jest",
+		"test:watchtest": "./test/watchtest.sh",
+		"test:with:rfg": "TEST_RFG_API=true npm run test"
 	},
 	"jest": {
 		"verbose": true,
@@ -65,7 +61,6 @@
 		"gulp-sourcemaps": "^2.6.5",
 		"gulp-svgmin": "^2.2.0",
 		"gulp-touch-cmd": "0.0.1",
-		"http-server": "^0.12.1",
 		"imagemin-pngquant": "^8.0.0",
 		"junk": "^3.1.0",
 		"merge-stream": "^2.0.0",
@@ -81,6 +76,8 @@
 		"eslint": "^6.8.0",
 		"eslint-config-peerigon": "^27.6.0",
 		"jest": "^25.1.0",
+		"npm-run-all": "^4.1.5",
+		"rimraf": "^3.0.2",
 		"scriptlint": "^2.0.5"
 	}
 }
