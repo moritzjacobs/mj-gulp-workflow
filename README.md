@@ -153,6 +153,9 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 
 # changelog
 
+## 2.3.1 - 2.3.3
+- Updated dependencies
+
 ## 2.2.1
 - created defaults for a lot of configuration to shrink down `gulp-config.js`
 
