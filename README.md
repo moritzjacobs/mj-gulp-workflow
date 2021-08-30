@@ -153,6 +153,10 @@ Run test http server with `npm run testd` => <http://localhost:8080>, then look 
 
 # changelog
 
+## 2.3.4
+- Updated dependencies
+
+
 ## 2.3.1 - 2.3.3
 - Updated dependencies
 - npm audit fix
